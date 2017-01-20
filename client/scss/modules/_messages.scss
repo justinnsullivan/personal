@@ -1,0 +1,107 @@
+.messages {
+    @include flexbox();
+    @include flex-direction(column);
+    @include justify-content(flex-start);
+    @include align-items();
+    height: 84%;
+    overflow-y: scroll;
+}
+
+.loader {
+    @include e(line) {
+        display: inline-block;
+        margin-top: 8px;
+        width: 12px;
+        height: 12px;
+        border-radius: 12px;
+        background-color: palette(primary, dark);
+        &:nth-last-child(1) {
+            @include animation(loadingC .7s .1s linear infinite);
+        }
+        &:nth-last-child(2) {
+            @include animation(loadingC .7s .2s linear infinite);
+        }
+        &:nth-last-child(3) {
+            @include animation(loadingC .7s .3s linear infinite);
+        }
+    }
+    &.killed {
+        display: none;
+    }
+}
+
+@keyframes loadingC {
+    0 {
+        @include transform(translate(0, 0px));
+    }
+    50% {
+        @include transform(translate(0, -10px));
+    }
+    100% {
+        @include transform(translate(0, 0px));
+    }
+}
+
+.message {
+    @include m(bot) {
+        &.first {
+            border-top-left-radius: 0px;
+            background: lighten($quartz,7%);
+            margin-left: 0px;
+        }
+        @extend %message;
+        background: lighten($quartz,7%);
+        margin-left: 70px;
+        @include align-self(flex-start);
+        color: palette(primary, dark);
+    }
+    @include m(user) {
+        &.first {
+            border-top-right-radius: 0px;
+            margin-right: 0;
+            background: rgba(#6D86F7, .7);
+        }
+        @extend %message;
+        margin-right: 70px;
+        background: rgba(#6D86F7, .7);
+        color: $white;
+        @include align-self(flex-end);
+    }
+    @include m(imgB) {
+        margin-top: 12px;
+        @include flexbox();
+        @include flex-direction(row);
+        @include justify-content(flex-start);
+        &.hidden {
+            display: none;
+        }
+    }
+    @include m(imgU) {
+        margin-top: 12px;
+        @include flexbox();
+        @include flex-direction(row);
+        @include justify-content(flex-end);
+        &.hidden {
+            display: none;
+        }
+    }
+    @include e(img){
+        width: 100%;
+        height: auto;
+    }
+}
+
+.block {
+    display: block;
+}
+
+.avatar {
+    @include m(bot) {
+        @extend %avatar;
+        content: url('./img/bot.png');
+    }
+    @include m(user) {
+        @extend %avatar;
+        content: url('./img/user.png');
+    }
+}

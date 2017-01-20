@@ -1,0 +1,93 @@
+$h-height: 30px;
+$h-width: 40px;
+.hamburger {
+    width: $h-width;
+    height: $h-height;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    @include transition(0.4s 0.5s);
+    @include transform(rotate(0deg));
+    cursor: pointer;
+    @include e(line) {
+        display: block;
+        position: absolute;
+        height: 6px;
+        width: 100%;
+        background: palette(primary, dark);
+        border-radius: 3px;
+        opacity: 1;
+        left: 0;
+        @include transition(0.4s 0.5s);
+        @include transform(rotate(0deg));
+        &.one {
+            top: 0px;
+            &.open {
+                top: ($h-height / 3);
+                width: 0%;
+                left: 50%;
+            }
+        }
+        &.twoA {
+            top: ($h-height / 3);
+            &.open {
+                @include transform(rotate(45deg));
+            }
+        }
+        &.twoB {
+            top: ($h-height / 3);
+            &.open {
+                @include transform(rotate(-45deg));
+            }
+        }
+        &.three {
+            top: ($h-height * 2/3);
+            &.open {
+                top: ($h-height / 3);
+                width: 0%;
+                left: 50%;
+            }
+        }
+    }
+}
+
+.menu {
+    height: 100%;
+    width: 0%;
+    @include flexbox();
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(center);
+    background: palette(primary, xx-dark);
+    @include transition(width 0.3s 0.3s, margin-left 0.3s 0.3s, box-shadow 0.3s 0.3s);
+    width: 25%;
+    margin-left: -25%;
+    &.extended {
+        margin-left: 0;
+        @include box-shadow(13px, 0px, 40px, -6px, palette(primary, x-dark));
+    }
+    @include e(button) {
+        @include m(resume) {
+            @extend %menu__button;
+            background: $cosmos;
+            &:hover {
+                background: darken($cosmos, 6%);
+            }
+        }
+        @include m(projects) {
+            @extend %menu__button;
+            background: palette(primary, x-dark);
+            &:hover {
+                background: palette(primary, xx-dark);
+            }
+        }
+        @include m(contact) {
+            @extend %menu__button;
+            height:34%;
+            background: $sprout;
+            &:hover {
+                background: darken($sprout, 6%);
+            }
+        }
+    }
+}

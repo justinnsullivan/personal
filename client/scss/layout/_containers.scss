@@ -1,0 +1,24 @@
+.container {
+    @include linear-gradientV($quartz, $lavender);
+    @include flexbox();
+    @include flex-direction(row);
+    @include justify-content(flex-start);
+    @include align-items(center);
+    overflow: hidden;
+    @include m(chat) {
+        width: 100%;
+        @include flexbox();
+        @include flex-direction(row);
+        @include justify-content(center);
+        @include align-items(center);
+        @include transition(width 0.3s 0.3s);
+        &.retracted {
+            width: 75%;
+        }
+    }
+    @include m(messages) {
+        display: block;
+        height: 100%;
+        overflow-y: scroll;
+    }
+}

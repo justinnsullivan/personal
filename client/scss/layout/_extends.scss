@@ -1,0 +1,17 @@
+%menu__button {
+    @include flexbox();
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(center);
+    font-family: $font-family--primary;
+    font-weight: $font-weight--bold;
+    font-size: 50px;
+    text-align: center;
+    height: 33%;
+    width: 100%;
+    color: $white;
+    &:hover {
+        cursor: pointer;
+    }
+    @include transition(width 0.3s 0.3s, box-shadow 0.3s 0.3s, opacity 0.3s 0.3s, background 0.4s 0.2s);
+}

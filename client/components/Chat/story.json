@@ -1,0 +1,114 @@
+{
+    "content": "Hi there, Im Justin! Welcome to my presonal website. I'm a Front End Developer from New York and a recent grad from Tufts University up in Bah-ston.",
+    "sender": 0,
+    "next": [{
+        "content": "People have described me as a: podcast addict, recipe sleuth, forest dweller, code forager and emoji amture",
+        "sender": 0,
+        "next": [{
+            "content": "What else would you like to know about me?",
+            "sender": 0,
+            "next": [{
+                "content": "Jobs",
+                "sender": 1,
+                "next": [{
+                    "content": "Last summer I worked for a fintech start up called KidKaching, helping to build a platform to inform kids about the value of investing",
+                    "sender": 0,
+                    "next": [{
+                        "content": "https://media.giphy.com/media/l0Ex9PlHUW2uD24Ew/giphy.gif",
+                        "sender": 0,
+                        "next": [{
+                            "content": "In addition to making a fully interactive, kid-friendly, parallax homepage, I used React, SASS and ES 6 to create prototypes of the application",
+                            "sender": 0,
+                            "next": [{
+                                "content": "https://i.imgur.com/dgvXJbp.png",
+                                "sender": 0,
+                                "next": [{
+                                    "content": "One of these tools helped KidKaching to be one of the winners of the BNP Paribas International Hackathon!",
+                                    "sender": 0,
+                                    "next": [{
+                                        "content": "Tell me more!",
+                                        "sender": 1,
+                                        "next": [{
+                                            "content": "In 2015 I was a Solutions Engineering intern at TripleLift a native adtech company.",
+                                            "sender": 0,
+                                            "next": [{
+                                                "content": "I got to get my hands on the entire stack, building internal tools for various departments using PHP, MySQL, Bootstrap and CSS3",
+                                                "sender": 0,
+                                                "next": [{
+                                                    "content": "Anything else?",
+                                                    "sender": 1,
+                                                    "next": [{
+                                                        "content": "I am currently a Teaching Assistant in two classes, Computational Theory and Web Engineering",
+                                                        "sender": 0,
+                                                        "next": [{
+                                                            "content": "Teaching these two classes has been amazing in allowing me to stretch both the abstract and the active parts of my coding brain.",
+                                                            "sender": 0,
+                                                            "next": [{
+                                                            "content": "If you'd like to see my ful resume make sure to click on the hamburger in the top left corner.",
+                                                            "sender": 0,
+                                                            "next": []
+                                                        }]
+                                                        }]
+                                                    }]
+                                                }, {
+                                                    "content": "Tell me about other stuff",
+                                                    "sender": 1,
+                                                    "next": [{
+                                                        "content": "Great",
+                                                        "sender": 0,
+                                                        "next": []
+                                                    }]
+                                                }]
+                                            }]
+                                        }]
+                                    }, {
+                                        "content": "Lets move one",
+                                        "sender": 1,
+                                        "next": [{
+                                            "content": "Awesome!",
+                                            "sender": 0,
+                                            "next": []
+                                        }]
+                                    }]
+                                }]
+                            }]
+                        }]
+
+                    }]
+                }]
+            }, {
+                "content": "School",
+                "sender": 1,
+                "next": []
+            }, {
+                "content": "Projects",
+                "sender": 1,
+                "next": []
+            }, {
+                "content": "GIFS PLEASE!",
+                "sender": 1,
+                "next": [{
+                    "content": "You got it!",
+                    "sender": 0,
+                    "next": [{
+                        "content": "https://media.giphy.com/media/av3t7WMe0t0M8/giphy.gif",
+                        "sender": 0,
+                        "next": [{
+                            "content": "https://media.giphy.com/media/6jOXsxk3UMAKI/giphy.gif",
+                            "sender": 0,
+                            "next": [{
+                                "content": "https://media.giphy.com/media/ZvLUtG6BZkBi0/giphy.gif",
+                                "sender": 0,
+                                "next": [{
+                                    "content": "https://media.giphy.com/media/yidUzqLoT6SxgKzv20/giphy.gif",
+                                    "sender": 0,
+                                    "next": []
+                                }]
+                            }]
+                        }]
+                    }]
+                }]
+            }]
+        }]
+    }]
+}
