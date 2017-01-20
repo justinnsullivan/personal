@@ -30,9 +30,9 @@ function lineToMessage(line) {
 
 function scrollToRecent() {
     var rep = $('.responses');
-    if ($(rep[0]).offset()) {
+    if ($(rep.last()).offset()) {
         $('.messages').animate({
-            scrollTop: $(rep[0]).last().offset().bottom
+            scrollTop: $('.messages')[0].scrollHeight + 70
         });
     }
 }
@@ -43,6 +43,7 @@ function hideResps() {
         function(e) {
             $('.responses').removeClass('fadeOut');
             $('.responses').addClass('waiting');
+            setTimeout(scrollToRecent, 300)
         });
 }
 
@@ -54,18 +55,18 @@ Script.vm = (function() {
     vm.messages = new Script.Messages();
     vm.script = new Script();
     vm.responses = new Script.Responses();
+
     vm.choose = function(response, index) {
         $('.messages').append($('.responses').clone().attr('id', 'newp'));
         var elems = document.getElementsByClassName("messages");
         var elem = elems[elems.length - 1];
-        
+
         vm.continue(response);
-        
+
         $('.responses').one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
             function(e) {
                 $('#newp').remove();
                 setTimeout(vm.stopLoad, 100)
-                
             });
 
     }
@@ -76,26 +77,29 @@ Script.vm = (function() {
         elems = $('.loading')
 
         if (boxes.length != 0) {
-
+            scrollToRecent();
             setTimeout(function() {
                 $(boxes[0]).removeClass('hidden');
-                scrollToRecent();
             }, 600)
             setTimeout(function() {
                 $(loaders[0]).removeClass('activel');
                 $(loaders[0]).addClass('killed');
                 $(elems[0]).removeClass('loading');
+                if (loaders.length == 1) {
+                    scrollToRecent();
+                }
                 vm.stopLoad()
             }, 3000)
         } else {
-            $('.responses').removeClass('waiting');
-            $('.responses').addClass('bounceIn');
-            $('.responses').one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
-                function(e) {
-                    $('.responses').removeClass('bounceIn');
-
-                });
-
+            // scrollToRecent();
+            // setTimeout(function() {
+                $('.responses').removeClass('waiting');
+                $('.responses').addClass('fadeIn');
+                $('.responses').one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
+                    function(e) {
+                        $('.responses').removeClass('fadeIn');
+                    });
+            // }, 400)
         }
     }
 

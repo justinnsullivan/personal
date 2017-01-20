@@ -237,7 +237,7 @@ a {
       background: #b0be8b; }
 
 .chat {
-  height: 70%;
+  height: 80%;
   position: relative;
   width: 35vw;
   border-radius: 14px;
@@ -498,18 +498,18 @@ a {
     opacity: 0; }
     .responses.waiting .response {
       cursor: default; }
-  .responses.bounceIn {
-    -webkit-animation: bounceInUp 1s ease;
-    -moz-animation: bounceInUp 1s ease;
-    -ms-animation: bounceInUp 1s ease;
-    -o-animation: bounceInUp 1s ease;
-    animation: bounceInUp 1s ease; }
+  .responses.fadeIn {
+    -webkit-animation: fadeInUp 0.6s ease;
+    -moz-animation: fadeInUp 0.6s ease;
+    -ms-animation: fadeInUp 0.6s ease;
+    -o-animation: fadeInUp 0.6s ease;
+    animation: fadeInUp 0.6s ease; }
   .responses.fadeOut {
-    -webkit-animation: fadeOutDown 0.4s ease;
-    -moz-animation: fadeOutDown 0.4s ease;
-    -ms-animation: fadeOutDown 0.4s ease;
-    -o-animation: fadeOutDown 0.4s ease;
-    animation: fadeOutDown 0.4s ease; }
+    -webkit-animation: fadeOutDown 0.6s ease;
+    -moz-animation: fadeOutDown 0.6s ease;
+    -ms-animation: fadeOutDown 0.6s ease;
+    -o-animation: fadeOutDown 0.6s ease;
+    animation: fadeOutDown 0.6s ease; }
 
 .response {
   font-family: "Nunito", sans-serif;
@@ -519,51 +519,28 @@ a {
   margin-bottom: 10px;
   background: rgba(109, 134, 247, 0.7);
   color: #fff;
-  border-radius: 12px;
-  padding: 12px 10px; }
+  border-radius: 18px;
+  padding: 14px 0px;
+  width: 22%;
+  text-align: center; }
   .response:hover {
     cursor: pointer; }
 
-@keyframes bounceInUp {
-  from,
-  60%,
-  75%,
-  90%,
-  to {
-    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    -moz-transform: translate(0, 20px);
-    -o-transform: translate(0, 20px);
-    -ms-transform: translate(0, 20px);
-    -webkit-transform: translate(0, 20px);
-    transform: translate(0, 20px); }
-  20% {
-    opacity: 1;
-    -moz-transform: translate(0, -10px);
-    -o-transform: translate(0, -10px);
-    -ms-transform: translate(0, -10px);
-    -webkit-transform: translate(0, -10px);
-    transform: translate(0, -10px); }
-  40% {
-    -moz-transform: translate(0, 10px);
-    -o-transform: translate(0, 10px);
-    -ms-transform: translate(0, 10px);
-    -webkit-transform: translate(0, 10px);
-    transform: translate(0, 10px); }
-  60% {
-    -moz-transform: translate(0, -5px);
-    -o-transform: translate(0, -5px);
-    -ms-transform: translate(0, -5px);
-    -webkit-transform: translate(0, -5px);
-    transform: translate(0, -5px); }
+    -moz-transform: translate(0, 100%);
+    -o-transform: translate(0, 100%);
+    -ms-transform: translate(0, 100%);
+    -webkit-transform: translate(0, 100%);
+    transform: translate(0, 100%); }
   to {
-    -moz-transform: translate(0, 0);
-    -o-transform: translate(0, 0);
-    -ms-transform: translate(0, 0);
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0); } }
+    opacity: 1;
+    -moz-transform: none;
+    -o-transform: none;
+    -ms-transform: none;
+    -webkit-transform: none;
+    transform: none; } }
 
 @keyframes fadeOutDown {
   from {
