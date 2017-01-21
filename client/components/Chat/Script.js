@@ -91,15 +91,12 @@ Script.vm = (function() {
                 vm.stopLoad()
             }, 3000)
         } else {
-            // scrollToRecent();
-            // setTimeout(function() {
-                $('.responses').removeClass('waiting');
-                $('.responses').addClass('fadeIn');
-                $('.responses').one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
-                    function(e) {
-                        $('.responses').removeClass('fadeIn');
-                    });
-            // }, 400)
+            $('.responses').removeClass('waiting');
+            $('.responses').addClass('fadeIn');
+            $('.responses').one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
+                function(e) {
+                    $('.responses').removeClass('fadeIn');
+                });
         }
     }
 

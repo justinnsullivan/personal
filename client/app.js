@@ -1,5 +1,8 @@
 var m = require('mithril');
-var Front = require('./components/Front');
+var Hamburger = require('./components/Hamburger');
+var Chat = require('./components/Chat/Chat');
+var Menu = require('./components/Menu');
+var Resume = require
 
 
 //
@@ -14,13 +17,15 @@ m.route.mode = 'pathname';
 m.route(document.getElementById('app'), '/', {
 
     '/': {
-        // Controllers are optional
-        // controller: function () {},
-
         view: function(ctrl) {
             return m('.app', [
-                m.component(Front)
-                // m.component(MyComponent, { title: 'Welcome to my app!' })
+                m('.my-component', [
+                    m.component(Hamburger),
+                    m('div', { class: "container" }, [
+                        m.component(Menu),
+                        m.component(Chat)
+                    ])
+                ])
             ]);
         }
     }

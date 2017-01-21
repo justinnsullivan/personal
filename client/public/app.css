@@ -50,6 +50,7 @@ a {
   overflow: hidden; }
   .container--chat {
     width: 100%;
+    height: 100%;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-flex;
@@ -112,13 +113,15 @@ a {
   height: 33%;
   width: 100%;
   color: #fff;
+  background: #6D86F7;
   -webkit-transition: width 0.3s 0.3s, box-shadow 0.3s 0.3s, opacity 0.3s 0.3s, background 0.4s 0.2s;
   -moz-transition: width 0.3s 0.3s, box-shadow 0.3s 0.3s, opacity 0.3s 0.3s, background 0.4s 0.2s;
   -ms-transition: width 0.3s 0.3s, box-shadow 0.3s 0.3s, opacity 0.3s 0.3s, background 0.4s 0.2s;
   -o-transition: width 0.3s 0.3s, box-shadow 0.3s 0.3s, opacity 0.3s 0.3s, background 0.4s 0.2s;
   transition: width 0.3s 0.3s, box-shadow 0.3s 0.3s, opacity 0.3s 0.3s, background 0.4s 0.2s; }
   .menu__button--resume:hover, .menu__button--projects:hover, .menu__button--contact:hover {
-    cursor: pointer; }
+    cursor: pointer;
+    background: #506ef5; }
 
 .hamburger {
   width: 40px;
@@ -237,9 +240,10 @@ a {
       background: #b0be8b; }
 
 .chat {
-  height: 80%;
+  height: 85%;
   position: relative;
   width: 35vw;
+  margin-bottom: 30px;
   border-radius: 14px;
   background: #fff;
   position: relative;
