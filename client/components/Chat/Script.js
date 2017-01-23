@@ -1,11 +1,8 @@
 var m = require('mithril')
-
-// var json = '{"content":"Hi there! Im Justin. Welcome to my personal website","sender":0,"next":[{"content":"I am a Front End Developer from New York and Id love to tell you about myself","sender":0,"next":[{"content":"What would you like to hear about?","sender":0,"next":[{"content":"Your experience!","sender":1,"next":[{"content":"This is some info about jobs wow jobs","sender":0,"next":[{"content":"Moar peas","sender":1,"next":[{"content":"And now Im done!","sender":0,"next":[]}]},{"content":"What about other things?","sender":1,"next":[{"content":"Cool!","sender":0,"next":[]}]}]}]},{"content":"How about School?","sender":1,"next":[]},{"content":"Got any projects?","sender":1,"next":[]},{"content":"GIFS PLEASE!","sender":1,"next":[{"content":"https://media.giphy.com/media/av3t7WMe0t0M8/giphy.gif","sender":0,"next":[]}]}]}]}]}';
-
 var Script = {};
 var Message = require('./Message');
+var Responses = require('./Responses');
 var here = require('./story');
-// var here = JSON.parse(json);
 
 var Script = function(content, sender, next) {
     this.content = m.prop(content);
@@ -28,23 +25,15 @@ function lineToMessage(line) {
     return new Message(line.content(), line.sender());
 }
 
-function scrollToRecent() {
-    var rep = $('.responses');
-    if ($(rep.last()).offset()) {
-        $('.messages').animate({
-            scrollTop: $('.messages')[0].scrollHeight + 70
-        });
-    }
+function isLoading(mess) {
+    return mess.class.indexOf("loading") != -1;
 }
 
-function hideResps() {
-    $('.responses').addClass('fadeOut');
-    $('.responses').one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
-        function(e) {
-            $('.responses').removeClass('fadeOut');
-            $('.responses').addClass('waiting');
-            setTimeout(scrollToRecent, 300)
-        });
+function scrollToRecent() {
+    var elem = document.getElementsByClassName("messages")[0];
+    if (elem) {
+        elem.scrollTop = elem.scrollHeight;
+    }
 }
 
 Script.Messages = Array;
@@ -54,71 +43,62 @@ Script.vm = (function() {
     var vm = {};
     vm.messages = new Script.Messages();
     vm.script = new Script();
-    vm.responses = new Script.Responses();
+    vm.responses = new Responses([], 'responses waiting');
 
-    vm.choose = function(response, index) {
-        $('.messages').append($('.responses').clone().attr('id', 'newp'));
-        var elems = document.getElementsByClassName("messages");
-        var elem = elems[elems.length - 1];
+    vm.animateChat = function() {
+        scrollToRecent();
+        var messages = vm.messages.filter(isLoading);
+        if (messages[0]) {
+            setTimeout(function() {
+                messages[0].removeClass('hidden');
+                m.redraw();
 
-        vm.continue(response);
-
-        $('.responses').one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
-            function(e) {
-                $('#newp').remove();
-                setTimeout(vm.stopLoad, 100)
-            });
+            }, 600)
+            setTimeout(function() {
+                messages[0].removeClass('loading');
+                m.redraw();
+                vm.animateChat()
+            }, 3000)
+        } else {
+            vm.responses.appear();
+        }
 
     }
 
-    vm.stopLoad = function() {
-        var loaders = $('.activel'),
-            boxes = $('.hidden')
-        elems = $('.loading')
+    vm.choose = function(response, index) {
+        vm.responses.disappear();
+        vm.messages.push(lineToMessage(response));
+        m.redraw();
+        setTimeout(function() {
+            vm.responses.reset();
 
-        if (boxes.length != 0) {
-            scrollToRecent();
-            setTimeout(function() {
-                $(boxes[0]).removeClass('hidden');
-            }, 600)
-            setTimeout(function() {
-                $(loaders[0]).removeClass('activel');
-                $(loaders[0]).addClass('killed');
-                $(elems[0]).removeClass('loading');
-                if (loaders.length == 1) {
-                    scrollToRecent();
-                }
-                vm.stopLoad()
-            }, 3000)
-        } else {
-            $('.responses').removeClass('waiting');
-            $('.responses').addClass('fadeIn');
-            $('.responses').one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
-                function(e) {
-                    $('.responses').removeClass('fadeIn');
-                });
-        }
+            m.redraw();
+
+            vm.continue(response)
+        }, 500)
+
     }
 
     vm.continue = function(line) {
-        hideResps();
         vm.current = line;
-        vm.messages.push(lineToMessage(line));
-
-        vm.stopLoad()
+        if (line.sender() == 0) {
+            vm.messages.push(lineToMessage(line));
+        }
         if (line.content() == "What else would you like to know about me?") {
             vm.home = line;
         }
+
+        vm.animateChat()
         if (line.next().length == 0) {
             vm.continue(vm.home);
         } else if (line.next().length == 1) {
             vm.continue(line.next()[0]);
         } else {
-            var temp = new Script.Responses();
+            var temp = [];
             for (var i = 0; i < line.next().length; i++) {
                 temp.push(line.next()[i]);
             }
-            vm.responses = temp;
+            vm.responses = new Responses(temp, 'responses waiting')
         }
     }
 
@@ -127,8 +107,6 @@ Script.vm = (function() {
         vm.home = vm.script;
         vm.continue(vm.script);
     }
-
-    setTimeout(vm.stopLoad, 500)
     return vm
 }())
 
@@ -144,8 +122,8 @@ Script.view = function() {
                 m("div", { class: "messages" }, [
                     Script.vm.messages.map(function(mess, index) {
                         return mess.craftElement(index, Script.vm.messages);
-                    }), m("div", { class: "responses waiting" }, [
-                        Script.vm.responses.map(function(resp, index) {
+                    }), m("div", { class: Script.vm.responses.class }, [
+                        Script.vm.responses.resps().map(function(resp, index) {
                             var words = resp.content();
                             return m("div", {
                                 class: "response",
