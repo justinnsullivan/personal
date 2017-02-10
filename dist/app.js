@@ -2354,7 +2354,7 @@ Menu.vm = function () {
     m.route("/resume");
   };
   vm.toHome = function () {
-    m.route("/home");
+    m.route("/");
   };
   return vm;
 }();
@@ -2367,7 +2367,7 @@ Menu.view = function () {
     { className: "menu" },
     m(
       "div",
-      { className: "menu__button--home", onclick: Menu.vm.toRes.bind() },
+      { className: "menu__button--home", onclick: Menu.vm.toHome.bind() },
       "HOME"
     ),
     m(

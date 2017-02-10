@@ -7,7 +7,7 @@ Menu.vm = (function() {
     	m.route("/resume");
     }
     vm.toHome = function(){
-    	m.route("/home");
+    	m.route("/");
     }
     return vm;
 }())
@@ -18,7 +18,7 @@ Menu.controller = function() {
 Menu.view = function() {
 	return(
 		<div className='menu'>
-			<div className='menu__button--home' onclick={Menu.vm.toRes.bind()}>HOME</div>
+			<div className='menu__button--home' onclick={Menu.vm.toHome.bind()}>HOME</div>
 			<div className='menu__button--resume' onclick={Menu.vm.toRes.bind()}>RESUME</div>
 			<div className='menu__button--contact'>CONTACT</div>
 		</div>
