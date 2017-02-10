@@ -38,13 +38,13 @@
                                                     "content": "Anything else?",
                                                     "sender": 1,
                                                     "next": [{
-                                                        "content": "I am currently a Teaching Assistant in two classes, Computational Theory and Web Engineering",
+                                                        "content": "I am currently working as a Front End advisor/contractor for Mimir Insights a startup started by Tufts Students",
                                                         "sender": 0,
                                                         "next": [{
-                                                            "content": "Teaching these two classes has been amazing in allowing me to stretch both the abstract and the active parts of my coding brain.",
+                                                            "content": "I worked to rehaul their CSS implemting SASS with BEM and SMACSS methodologies, in addition to developing various tools in Angular.JS ",
                                                             "sender": 0,
                                                             "next": [{
-                                                            "content": "If you'd like to see my ful resume make sure to click on the hamburger in the top left corner.",
+                                                            "content": "If you'd like to see my full resumé make sure to click on the hamburger in the top left corner.",
                                                             "sender": 0,
                                                             "next": []
                                                         }]
@@ -62,7 +62,7 @@
                                             }]
                                         }]
                                     }, {
-                                        "content": "Lets move one",
+                                        "content": "Let's move on",
                                         "sender": 1,
                                         "next": [{
                                             "content": "Awesome!",
@@ -79,7 +79,72 @@
             }, {
                 "content": "School",
                 "sender": 1,
-                "next": []
+                "next": [{
+                    "content": "I am a 2017 Graduate of Tufts University. GO BO's!",
+                    "sender": 0,
+                    "next": [{
+                        "content": "Up in Boston I gained a Bachelors of Science in Computer Science and a Minor in English",
+                        "sender": 0,
+                        "next": [{
+                            "content": "My coursework was varied and rigorous including: Computational Theory, Web Engineering, Algorithims and Natural Language Processing ",
+                            "sender": 0,
+                            "next": [{
+                                "content": "https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif",
+                                "sender": 0,
+                                "next": [{
+                                    "content": "The diversity of my courses and my minor in English gives me a nuanced approach to crafting user experiences!",
+                                    "sender": 0,
+                                    "next": [{
+                                        "content": "What else?",
+                                        "sender": 1,
+                                        "next": [{
+                                            "content": "I am currently a Teaching Assistant in two classes, Computational Theory and Web Engineering.",
+                                            "sender": 0,
+                                            "next": [{
+                                                "content": "Assisting in lectures, teaching students how to write incredible proofs and even fixing trivial bugs has made TA'ing one of the highlights of my time at Tufts.",
+                                                "sender": 0,
+                                                "next": [{
+                                                    "content": "Any extra-curriculars?",
+                                                    "sender": 1,
+                                                    "next": [{
+                                                        "content": "A ton! I was a Leader for Tufts wilderness pre-orientation program called TWO and was a mechanic for Tufts Bikes",
+                                                        "sender": 0,
+                                                        "next": [{
+                                                            "content": "Additioanlly I was a member of the Tufts University Beelzebubs, Tufts oldest a ccappella group!",
+                                                            "sender": 0,
+                                                            "next": [{
+                                                            "content": "As you can see like most engineers I sort of live to 'over-commit' myself",
+                                                            "sender": 0,
+                                                            "next": []
+                                                        }]
+                                                        }]
+                                                    }]
+                                                }, {
+                                                    "content": "Let's move on",
+                                                    "sender": 1,
+                                                    "next": [{
+                                                        "content": "Sure thing!",
+                                                        "sender": 0,
+                                                        "next": []
+                                                    }]
+                                                }]
+                                            }]
+                                        }]
+                                    }, {
+                                        "content": "Tell me about other things",
+                                        "sender": 1,
+                                        "next": [{
+                                            "content": "Sounds good",
+                                            "sender": 0,
+                                            "next": []
+                                        }]
+                                    }]
+                                }] 
+                            }]
+                        }]
+
+                    }]
+                }]
             }, {
                 "content": "Projects",
                 "sender": 1,

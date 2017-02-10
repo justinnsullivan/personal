@@ -1,12 +1,10 @@
 var m = require('mithril')
 var Script = require('./Script');
 
-var Chat = function(header, theme) {
-    this.header = m.prop(header);
-    this.theme = m.prop(theme);
-}
+var Chat =  {}
 
-var here = "Chat Yay!", theme = "dark";
+var here = "Chat Yay!",
+    theme = "dark";
 Chat.vm = (function() {
     var vm = {};
 
@@ -18,13 +16,16 @@ Chat.vm = (function() {
 }())
 
 Chat.controller = function() {
-    Chat.vm.init()
+    Chat.vm.init();
 }
 
+
 Chat.view = function() {
-    return m("div", {class: "container--chat"}, [
-        m.component(Script)
-    ]);
+    return(
+        <div className="container--chat main">
+            <Script/>
+        </div>
+        );
 };
 
 module.exports = Chat;

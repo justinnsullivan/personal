@@ -1,10 +1,11 @@
 var m = require('mithril')
-var Script = {};
 var Message = require('./Message');
 var Responses = require('./Responses');
-var here = require('./story');
+var here = require('./story.json')
 
-var Script = function(content, sender, next) {
+var Script = {}
+
+var Story = function(content, sender, next) {
     this.content = m.prop(content);
     this.next = m.prop(next);
     this.sender = m.prop(sender);
@@ -15,9 +16,9 @@ var Script = function(content, sender, next) {
 
 function toScript(data) {
     if (data["next"] == []) {
-        return new Script(data["content"], data["sender"], data["next"])
+        return new Story(data["content"], data["sender"], data["next"])
     } else {
-        return new Script(data["content"], data["sender"], data["next"].map(toScript))
+        return new Story(data["content"], data["sender"], data["next"].map(toScript))
     }
 }
 
@@ -39,10 +40,11 @@ function scrollToRecent() {
 Script.Messages = Array;
 Script.Responses = Array;
 var n = 0;
+
 Script.vm = (function() {
     var vm = {};
     vm.messages = new Script.Messages();
-    vm.script = new Script();
+    vm.script = new Story();
     vm.responses = new Responses([], 'responses waiting');
 
     vm.animateChat = function() {
@@ -115,27 +117,33 @@ Script.controller = function() {
 }
 
 Script.view = function() {
-    return m("div", [
-        m("div", { class: "chat" }, [
-            m("div", { class: "chat__header" }, "Justin Sullivan"),
-            m("div", { class: "chat__conversation" }, [
-                m("div", { class: "messages" }, [
-                    Script.vm.messages.map(function(mess, index) {
-                        return mess.craftElement(index, Script.vm.messages);
-                    }), m("div", { class: Script.vm.responses.class }, [
-                        Script.vm.responses.resps().map(function(resp, index) {
-                            var words = resp.content();
-                            return m("div", {
-                                class: "response",
-                                onclick: Script.vm.choose.bind(Script.vm.choose, resp, index)
-                            }, words);
-                        })
-                    ])
-
-                ])
-            ])
-        ]),
-    ]);
+    var messages = Script.vm.messages.map(function(mess, index) {
+        return mess.craftElement(index, Script.vm.messages);
+    });
+    var resp_class = Script.vm.responses.class;
+    var responses = Script.vm.responses.resps().map(function(resp, index) {
+        var words = resp.content();
+        return (
+            <div className="response" onclick={Script.vm.choose.bind(Script.vm.choose, resp, index)}>
+                {words}
+            </div>
+        )
+    })
+    return (
+        <div>
+            <div className="chat">
+                <div className="chat__header">Justin Sullivan</div>
+                <div className="chat__conversation">
+                    <div className="messages">
+                        {messages}
+                        <div className={resp_class}>
+                            {responses}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        )
 };
 
 module.exports = Script;

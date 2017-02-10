@@ -69,21 +69,21 @@ $h-width: 40px;
     @include e(button) {
         @include m(resume) {
             @extend %menu__button;
-            background: $cosmos;
-            &:hover {
-                background: darken($cosmos, 6%);
-            }
-        }
-        @include m(projects) {
-            @extend %menu__button;
             background: palette(primary, x-dark);
             &:hover {
                 background: palette(primary, xx-dark);
             }
         }
+        @include m(home) {
+            @extend %menu__button;
+            background: $cosmos;
+            &:hover {
+                background: darken($cosmos, 6%);
+            }
+        }
         @include m(contact) {
             @extend %menu__button;
-            height:34%;
+            height: 34%;
             background: $sprout;
             &:hover {
                 background: darken($sprout, 6%);

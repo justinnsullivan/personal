@@ -4,7 +4,7 @@ Hamburger.controller = function(options) {
     this.click = function() {
         var elems = document.getElementsByClassName('menu');
         elems[0].classList.toggle('extended');
-        elems = document.getElementsByClassName('container--chat');
+        elems = document.getElementsByClassName('main');
         elems[0].classList.toggle('retracted');
         elems = document.getElementsByClassName('hamburger__line');
         for(var i = 0; i < elems.length; i++) {
