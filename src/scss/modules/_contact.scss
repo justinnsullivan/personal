@@ -1,0 +1,84 @@
+.grid-item {}
+
+.grid {
+    // position: absolute;
+    margin-left: -100%;
+    width: 100%;
+}
+
+.grid-item.is-moved {
+    transform: translateX(100vw);
+}
+
+%item {
+	@include flexbox();
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(center);
+    width: 20%;
+    height: 100vh;
+    float: left;
+    &:hover {
+        cursor: pointer;
+    }
+    &.is-moved {
+        transform: translateX(100vw);
+    }
+    transition: transform 0.9s;
+}
+%icon {
+	width: 60%;
+}
+
+.contact {
+    width: 100%;
+    position: fixed;
+    &.full {
+        z-index: 3000;
+    }
+    @include e(icon){
+    	@include m(email) {
+            @extend %icon;
+            content: url('img/mail.png');
+        }
+        @include m(phone) {
+            @extend %icon;
+            content: url('img/phone.png');
+        }
+        @include m(linkedin) {
+            @extend %icon;
+            content: url('img/link.png');
+        }
+        @include m(github) {
+            @extend %icon;
+            content: url('img/git.png');
+        }
+        @include m(address) {
+            @extend %icon;
+            content: url('img/home.png');
+        }
+    }
+    @include e(item) {
+        @extend %item;
+        @include m(github) {
+            @extend %item;
+            background: palette(primary,dark);
+        }
+        @include m(phone) {
+            @extend %item;
+            background: $cosmos;
+        }
+        @include m(email) {
+            @extend %item;
+            background: #99AAF9;
+        }
+        @include m(linkedin) {
+            @extend %item;
+            background: lighten($sprout,6%);
+        }
+        @include m(address) {
+            @extend %item;
+            background: #F9E1AB;
+        }
+    }
+}

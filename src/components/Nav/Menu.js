@@ -1,5 +1,7 @@
 var m = require('mithril');
+var Contact = require('../Contact');
 var Menu = {};
+
 
 Menu.vm = (function() {
     var vm = {};
@@ -20,7 +22,7 @@ Menu.view = function() {
 		<div className='menu'>
 			<div className='menu__button--home' onclick={Menu.vm.toHome.bind()}>HOME</div>
 			<div className='menu__button--resume' onclick={Menu.vm.toRes.bind()}>RESUME</div>
-			<div className='menu__button--contact'>CONTACT</div>
+			<div className='menu__button--contact' onclick={Contact.vm.toggleContact.bind()}>CONTACT</div>
 		</div>
 	)
 };

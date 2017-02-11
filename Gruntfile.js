@@ -48,7 +48,7 @@ module.exports = function(grunt) {
                 tasks: ['sass']
             },
             webpack: {
-                files: './src/**/*.js',
+                files: ['./src/**/*.js','./src/**/*.json'],
                 tasks: ['exec']
             }
         }

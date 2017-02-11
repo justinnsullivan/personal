@@ -6,6 +6,7 @@ $h-width: 40px;
     position: fixed;
     top: 20px;
     left: 20px;
+    z-index: 5000;
     @include transition(0.4s 0.5s);
     @include transform(rotate(0deg));
     cursor: pointer;
@@ -54,6 +55,7 @@ $h-width: 40px;
 .menu {
     height: 100%;
     width: 0%;
+    z-index: 1000;
     @include flexbox();
     @include flex-direction(column);
     @include justify-content(center);

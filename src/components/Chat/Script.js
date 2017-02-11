@@ -60,7 +60,7 @@ Script.vm = (function() {
                 messages[0].removeClass('loading');
                 m.redraw();
                 vm.animateChat()
-            }, 3000)
+            }, 2000)
         } else {
             vm.responses.appear();
         }
@@ -105,6 +105,7 @@ Script.vm = (function() {
     }
 
     vm.init = function() {
+        document.title = "Justin Sullivan"; 
         vm.script = toScript(here)
         vm.home = vm.script;
         vm.continue(vm.script);

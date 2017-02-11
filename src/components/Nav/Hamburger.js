@@ -1,15 +1,21 @@
 var m = require('mithril')
+var Contact = require('../Contact')
 var Hamburger = {};
 Hamburger.controller = function(options) {
+
     this.click = function() {
+        if (Contact.vm.isMoved == true) {
+            Contact.vm.toggleContact();
+        }
         var elems = document.getElementsByClassName('menu');
         elems[0].classList.toggle('extended');
         elems = document.getElementsByClassName('main');
         elems[0].classList.toggle('retracted');
         elems = document.getElementsByClassName('hamburger__line');
-        for(var i = 0; i < elems.length; i++) {
+        for (var i = 0; i < elems.length; i++) {
             elems[i].classList.toggle('open');
         }
+
     };
 };
 

@@ -74,7 +74,8 @@ a {
     -ms-transition: width 0.3s 0.3s;
     -o-transition: width 0.3s 0.3s;
     transition: width 0.3s 0.3s;
-    overflow: hidden; }
+    overflow: hidden;
+    z-index: 100; }
   .container--messages {
     display: block;
     height: 100%;
@@ -131,6 +132,7 @@ a {
   position: fixed;
   top: 20px;
   left: 20px;
+  z-index: 5000;
   -webkit-transition: 0.4s 0.5s;
   -moz-transition: 0.4s 0.5s;
   -ms-transition: 0.4s 0.5s;
@@ -193,6 +195,7 @@ a {
 .menu {
   height: 100%;
   width: 0%;
+  z-index: 1000;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
@@ -298,6 +301,73 @@ a {
     -webkit-box-shadow: 0 3px 5px 0px rgba(111, 116, 124, 0.6);
     -moz-box-shadow: 0 3px 5px 0px rgba(111, 116, 124, 0.6);
     box-shadow: 0 3px 5px 0px rgba(111, 116, 124, 0.6); }
+
+.grid {
+  margin-left: -100%;
+  width: 100%; }
+
+.grid-item.is-moved {
+  transform: translateX(100vw); }
+
+.contact__item, .contact__item--github, .contact__item--phone, .contact__item--email, .contact__item--linkedin, .contact__item--address {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  width: 20%;
+  height: 100vh;
+  float: left;
+  transition: transform 0.9s; }
+  .contact__item:hover, .contact__item--github:hover, .contact__item--phone:hover, .contact__item--email:hover, .contact__item--linkedin:hover, .contact__item--address:hover {
+    cursor: pointer; }
+  .is-moved.contact__item, .is-moved.contact__item--github, .is-moved.contact__item--phone, .is-moved.contact__item--email, .is-moved.contact__item--linkedin, .is-moved.contact__item--address {
+    transform: translateX(100vw); }
+
+.contact__icon--email, .contact__icon--phone, .contact__icon--linkedin, .contact__icon--github, .contact__icon--address {
+  width: 60%; }
+
+.contact {
+  width: 100%;
+  position: fixed; }
+  .contact.full {
+    z-index: 3000; }
+  .contact__icon--email {
+    content: url("img/mail.png"); }
+  .contact__icon--phone {
+    content: url("img/phone.png"); }
+  .contact__icon--linkedin {
+    content: url("img/link.png"); }
+  .contact__icon--github {
+    content: url("img/git.png"); }
+  .contact__icon--address {
+    content: url("img/home.png"); }
+  .contact__item--github {
+    background: #72839e; }
+  .contact__item--phone {
+    background: #FCCFC7; }
+  .contact__item--email {
+    background: #99AAF9; }
+  .contact__item--linkedin {
+    background: #cad4b3; }
+  .contact__item--address {
+    background: #F9E1AB; }
 
 .message--bot, .message--user {
   max-width: 60%;
@@ -614,9 +684,9 @@ a {
   margin-bottom: 10px;
   background: rgba(109, 134, 247, 0.7);
   color: #fff;
-  border-radius: 18px;
+  border-radius: 22px;
   padding: 14px 0px;
-  width: 22%;
+  width: 28%;
   text-align: center; }
   .response:hover {
     cursor: pointer; }
@@ -688,34 +758,6 @@ a {
     -webkit-box-shadow: 0px 2px 20px 5px rgba(111, 116, 124, 0.8);
     -moz-box-shadow: 0px 2px 20px 5px rgba(111, 116, 124, 0.8);
     box-shadow: 0px 2px 20px 5px rgba(111, 116, 124, 0.8); }
-  .resume__content {
-    width: 100%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-direction: normal;
-    -webkit-box-orient: vertical;
-    -webkit-flex-direction: column;
-    -moz-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    -webkit-justify-content: flex-start;
-    -moz-justify-content: flex-start;
-    justify-content: flex-start;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    align-items: center;
-    -webkit-transition: width 0.3s 0.3s;
-    -moz-transition: width 0.3s 0.3s;
-    -ms-transition: width 0.3s 0.3s;
-    -o-transition: width 0.3s 0.3s;
-    transition: width 0.3s 0.3s; }
   .resume__header {
     width: 400px;
     padding: 35px;

@@ -8,7 +8,7 @@
             "content": "What else would you like to know about me?",
             "sender": 0,
             "next": [{
-                "content": "Jobs",
+                "content": "Job Experience",
                 "sender": 1,
                 "next": [{
                     "content": "Last summer I worked for a fintech start up called KidKaching, helping to build a platform to inform kids about the value of investing",
@@ -51,7 +51,7 @@
                                                         }]
                                                     }]
                                                 }, {
-                                                    "content": "Let's move on",
+                                                    "content": "Other things please!",
                                                     "sender": 1,
                                                     "next": [{
                                                         "content": "Great",
@@ -77,7 +77,7 @@
                     }]
                 }]
             }, {
-                "content": "School",
+                "content": "Your school!",
                 "sender": 1,
                 "next": [{
                     "content": "I am a 2017 Graduate of Tufts University. GO BO's!",
@@ -145,10 +145,6 @@
 
                     }]
                 }]
-            }, {
-                "content": "Projects",
-                "sender": 1,
-                "next": []
             }, {
                 "content": "GIFS PLEASE!",
                 "sender": 1,

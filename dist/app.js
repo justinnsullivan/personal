@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -2305,7 +2305,7 @@
 	return m
 }); // eslint-disable-line
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)(module)))
 
 /***/ }),
 /* 1 */
@@ -2315,9 +2315,95 @@
 
 
 var m = __webpack_require__(0);
+var Contact = {};
+
+Contact.vm = function () {
+    var vm = {};
+    var docElemStyle = document.documentElement.style;
+    var transitionProp = typeof docElemStyle.transition == 'string' ? 'transition' : 'WebkitTransition';
+    vm.isMoved = false;
+
+    vm.toLink = function () {
+        window.location.href = "https://www.linkedin.com/in/justin-sullivan-4a929889";
+    };
+    vm.toggleContact = function () {
+        var items = document.getElementsByClassName('item');
+        var contact = document.getElementsByClassName('contact')[0];
+        var time = 0;
+        if (vm.isMoved == true) {
+            time = 1000;
+        }
+        vm.isMoved = !vm.isMoved;
+        setTimeout(function () {
+            contact.classList.toggle('full');
+        }, time);
+
+        for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            var delay = vm.isMoved ? items.length - i - 1 : i;
+            item.style[transitionProp + 'Delay'] = delay * 50 + 'ms';
+            item.classList.toggle('is-moved');
+        }
+    };
+    return vm;
+}();
+
+Contact.controller = function () {};
+
+Contact.view = function () {
+    return m(
+        'div',
+        { className: 'contact' },
+        m(
+            'div',
+            { className: 'grid' },
+            m(
+                'div',
+                { className: 'contact__item--email item' },
+                m('img', { className: 'contact__icon--email' })
+            ),
+            m(
+                'div',
+                { className: 'contact__item--phone item' },
+                m('img', { className: 'contact__icon--phone' })
+            ),
+            m(
+                'div',
+                { className: 'contact__item--github item' },
+                m('img', { className: 'contact__icon--github' })
+            ),
+            m(
+                'div',
+                { className: 'contact__item--address item' },
+                m('img', { className: 'contact__icon--address' })
+            ),
+            m(
+                'div',
+                { className: 'contact__item--linkedin item' },
+                m('img', { className: 'contact__icon--linkedin' })
+            )
+        )
+    );
+};
+
+module.exports = Contact;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var m = __webpack_require__(0);
+var Contact = __webpack_require__(1);
 var Hamburger = {};
 Hamburger.controller = function (options) {
+
     this.click = function () {
+        if (Contact.vm.isMoved == true) {
+            Contact.vm.toggleContact();
+        }
         var elems = document.getElementsByClassName('menu');
         elems[0].classList.toggle('extended');
         elems = document.getElementsByClassName('main');
@@ -2339,13 +2425,14 @@ Hamburger.view = function (ctrl, options) {
 module.exports = Hamburger;
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var m = __webpack_require__(0);
+var Contact = __webpack_require__(1);
 var Menu = {};
 
 Menu.vm = function () {
@@ -2363,22 +2450,22 @@ Menu.controller = function () {};
 
 Menu.view = function () {
   return m(
-    "div",
-    { className: "menu" },
+    'div',
+    { className: 'menu' },
     m(
-      "div",
-      { className: "menu__button--home", onclick: Menu.vm.toHome.bind() },
-      "HOME"
+      'div',
+      { className: 'menu__button--home', onclick: Menu.vm.toHome.bind() },
+      'HOME'
     ),
     m(
-      "div",
-      { className: "menu__button--resume", onclick: Menu.vm.toRes.bind() },
-      "RESUME"
+      'div',
+      { className: 'menu__button--resume', onclick: Menu.vm.toRes.bind() },
+      'RESUME'
     ),
     m(
-      "div",
-      { className: "menu__button--contact" },
-      "CONTACT"
+      'div',
+      { className: 'menu__button--contact', onclick: Contact.vm.toggleContact.bind() },
+      'CONTACT'
     )
   );
 };
@@ -2386,16 +2473,17 @@ Menu.view = function () {
 module.exports = Menu;
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var m = __webpack_require__(0);
-var Hamburger = __webpack_require__(1);
-var Chat = __webpack_require__(5);
-var Menu = __webpack_require__(2);
+var Hamburger = __webpack_require__(2);
+var Chat = __webpack_require__(6);
+var Menu = __webpack_require__(3);
+var Contact = __webpack_require__(1);
 
 exports.controller = function (options) {};
 
@@ -2403,6 +2491,7 @@ exports.view = function (ctrl, options) {
      return m(
           'div',
           null,
+          m(Contact, null),
           m(Hamburger, null),
           m(
                'div',
@@ -2414,18 +2503,31 @@ exports.view = function (ctrl, options) {
 };
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var m = __webpack_require__(0);
-var Hamburger = __webpack_require__(1);
-var Menu = __webpack_require__(2);
-exports.controller = function (options) {};
+var Hamburger = __webpack_require__(2);
+var Menu = __webpack_require__(3);
 
-exports.view = function (ctrl, options) {
+var Resume = {};
+
+Resume.vm = function () {
+    var vm = {};
+    vm.init = function () {
+        document.title = "Resume - Justin Sullivan";
+    };
+    return vm;
+}();
+
+Resume.controller = function (options) {
+    Resume.vm.init();
+};
+
+Resume.view = function (ctrl, options) {
     return m(
         'div',
         { 'class': 'container' },
@@ -2434,59 +2536,150 @@ exports.view = function (ctrl, options) {
         m(
             'div',
             { className: 'resume main' },
+            m('div', { className: 'resume__img' }),
             m(
                 'div',
-                { className: 'resume__img' },
-                '_'
+                { className: 'resume__header' },
+                m(
+                    'div',
+                    { className: 'resume__header__name' },
+                    'Justin N. Sullivan'
+                ),
+                m(
+                    'div',
+                    { className: 'resume__header__contact' },
+                    m(
+                        'p',
+                        null,
+                        'justinnsullivan@gmail.com'
+                    ),
+                    m(
+                        'p',
+                        null,
+                        '908.812.1119'
+                    ),
+                    m(
+                        'p',
+                        null,
+                        'justinnsullivan.com'
+                    ),
+                    m(
+                        'p',
+                        null,
+                        'github.com/justinnsullivan'
+                    )
+                )
             ),
             m(
                 'div',
-                { className: 'resume__content' },
+                { className: 'resume__edu' },
+                m(
+                    'h1',
+                    null,
+                    'Education'
+                ),
+                m('span', { className: 'resume__line' }),
                 m(
                     'div',
-                    { className: 'resume__header' },
+                    { className: 'resume__edu__title' },
                     m(
-                        'div',
-                        { className: 'resume__header__name' },
-                        'Justin N. Sullivan'
+                        'p',
+                        null,
+                        m(
+                            'span',
+                            null,
+                            'Tufts University'
+                        ),
+                        'BS in Computer Science - Minor In English'
                     ),
                     m(
+                        'p',
+                        { className: 'resume__edu__title--date' },
+                        'Expected May 2017'
+                    )
+                ),
+                m(
+                    'div',
+                    { className: 'resume__edu__details' },
+                    m(
+                        'p',
+                        null,
+                        m(
+                            'span',
+                            null,
+                            'Course:'
+                        ),
+                        'Computational Theory - Web Engineering - Algorithms - Security - Machine Structure'
+                    ),
+                    m(
+                        'p',
+                        null,
+                        m(
+                            'span',
+                            null,
+                            'Interests:'
+                        ),
+                        'Tufts Wilderness Orientation - Tufts University Beelzebubs - Spirit Of Color Dance Crew - Tufts Bikes'
+                    )
+                )
+            ),
+            m(
+                'div',
+                { className: 'resume__exp' },
+                m(
+                    'h1',
+                    null,
+                    'Professional Experience'
+                ),
+                m('span', { className: 'resume__line' }),
+                m(
+                    'div',
+                    { className: 'resume__job' },
+                    m(
                         'div',
-                        { className: 'resume__header__contact' },
+                        { className: 'resume__job__title' },
                         m(
                             'p',
                             null,
-                            'justinnsullivan@gmail.com'
+                            m(
+                                'span',
+                                null,
+                                'Mimir'
+                            ),
+                            'Front End Engineer Contractor'
                         ),
                         m(
                             'p',
+                            { className: 'resume__job__title--date' },
+                            'Current'
+                        )
+                    ),
+                    m(
+                        'ul',
+                        { className: 'resume__job__details' },
+                        m(
+                            'li',
                             null,
-                            '908.812.1119'
+                            'Reorganized CSS, converting thier previous system to SASS with a BEM and SMACSS methodology'
                         ),
                         m(
-                            'p',
+                            'li',
                             null,
-                            'justinnsullivan.com'
+                            'Completed various Front End projects with a combination of Angular and Django'
                         ),
                         m(
-                            'p',
+                            'li',
                             null,
-                            'github.com/justinnsullivan'
+                            'Consulted with company on direction and standards for Front End code going forward'
                         )
                     )
                 ),
                 m(
                     'div',
-                    { className: 'resume__edu' },
-                    m(
-                        'h1',
-                        null,
-                        'Education'
-                    ),
-                    m('span', { className: 'resume__line' }),
+                    { className: 'resume__job' },
                     m(
                         'div',
-                        { className: 'resume__edu__title' },
+                        { className: 'resume__job__title' },
                         m(
                             'p',
                             null,
@@ -2495,380 +2688,283 @@ exports.view = function (ctrl, options) {
                                 null,
                                 'Tufts University'
                             ),
-                            'BS in Computer Science - Minor In English'
+                            'Web Engineering and Computational Theory TA'
                         ),
                         m(
                             'p',
-                            { className: 'resume__edu__title--date' },
-                            'Expected May 2017'
+                            { className: 'resume__job__title--date' },
+                            'Current'
                         )
                     ),
                     m(
-                        'div',
-                        { className: 'resume__edu__details' },
+                        'ul',
+                        { className: 'resume__job__details' },
                         m(
-                            'p',
+                            'li',
                             null,
-                            m(
-                                'span',
-                                null,
-                                'Course:'
-                            ),
-                            'Computational Theory - Web Engineering - Algorithms - Security - Machine Structure'
+                            'Taught lecture on computer theory and proof writing, developed lesson plan'
                         ),
                         m(
-                            'p',
+                            'li',
                             null,
-                            m(
-                                'span',
-                                null,
-                                'Interests:'
-                            ),
-                            'Tufts Wilderness Orientation - Tufts University Beelzebubs - Spirit Of Color Dance Crew - Tufts Bikes'
+                            'Assisted students in debugging code and talking through the direction of web application projects'
+                        ),
+                        m(
+                            'li',
+                            null,
+                            'Graded computational proofs and web applications in various stages'
+                        ),
+                        m(
+                            'li',
+                            null,
+                            'Helped to craft the courses to keep the students in mind'
                         )
                     )
                 ),
                 m(
                     'div',
-                    { className: 'resume__exp' },
-                    m(
-                        'h1',
-                        null,
-                        'Professional Experience'
-                    ),
-                    m('span', { className: 'resume__line' }),
+                    { className: 'resume__job' },
                     m(
                         'div',
-                        { className: 'resume__job' },
+                        { className: 'resume__job__title' },
                         m(
-                            'div',
-                            { className: 'resume__job__title' },
+                            'p',
+                            null,
                             m(
-                                'p',
+                                'span',
                                 null,
-                                m(
-                                    'span',
-                                    null,
-                                    'Mimir'
-                                ),
-                                'Front End Engineer Contractor'
+                                'KidKaching'
                             ),
-                            m(
-                                'p',
-                                { className: 'resume__job__title--date' },
-                                'Current'
-                            )
+                            'Front End Engineering Intern'
                         ),
                         m(
-                            'ul',
-                            { className: 'resume__job__details' },
-                            m(
-                                'li',
-                                null,
-                                'Reorganized CSS, converting thier previous system to SASS with a BEM and SMACSS methodology'
-                            ),
-                            m(
-                                'li',
-                                null,
-                                'Completed various Front End projects with a combination of Angular and Django'
-                            ),
-                            m(
-                                'li',
-                                null,
-                                'Consulted with company on direction and standards for Front End code going forward'
-                            )
+                            'p',
+                            { className: 'resume__job__title--date' },
+                            'Summer 2016'
                         )
                     ),
                     m(
-                        'div',
-                        { className: 'resume__job' },
+                        'ul',
+                        { className: 'resume__job__details' },
                         m(
-                            'div',
-                            { className: 'resume__job__title' },
-                            m(
-                                'p',
-                                null,
-                                m(
-                                    'span',
-                                    null,
-                                    'Tufts University'
-                                ),
-                                'Web Engineering and Computational Theory TA'
-                            ),
-                            m(
-                                'p',
-                                { className: 'resume__job__title--date' },
-                                'Current'
-                            )
+                            'li',
+                            null,
+                            'Designed/Created a Parallax homepage with a custom narrative to encourage young kids to learn about investing'
                         ),
                         m(
-                            'ul',
-                            { className: 'resume__job__details' },
-                            m(
-                                'li',
-                                null,
-                                'Taught lecture on computer theory and proof writing, developed lesson plan'
-                            ),
-                            m(
-                                'li',
-                                null,
-                                'Assisted students in debugging code and talking through the direction of web application projects'
-                            ),
-                            m(
-                                'li',
-                                null,
-                                'Graded computational proofs and web applications in various stages'
-                            ),
-                            m(
-                                'li',
-                                null,
-                                'Helped to craft the courses to keep the students in mind'
-                            )
-                        )
-                    ),
-                    m(
-                        'div',
-                        { className: 'resume__job' },
-                        m(
-                            'div',
-                            { className: 'resume__job__title' },
-                            m(
-                                'p',
-                                null,
-                                m(
-                                    'span',
-                                    null,
-                                    'KidKaching'
-                                ),
-                                'Front End Engineering Intern'
-                            ),
-                            m(
-                                'p',
-                                { className: 'resume__job__title--date' },
-                                'Summer 2016'
-                            )
+                            'li',
+                            null,
+                            'Attended and won the first round of the BNP Paribas International Hackathon, created a prototype using React'
                         ),
                         m(
-                            'ul',
-                            { className: 'resume__job__details' },
-                            m(
-                                'li',
-                                null,
-                                'Designed/Created a Parallax homepage with a custom narrative to encourage young kids to learn about investing'
-                            ),
-                            m(
-                                'li',
-                                null,
-                                'Attended and won the first round of the BNP Paribas International Hackathon, created a prototype using React'
-                            ),
-                            m(
-                                'li',
-                                null,
-                                'Gained experience with and a passion for JS frameworks and SASS'
-                            ),
-                            m(
-                                'li',
-                                null,
-                                'Helped map out the functionality and UI of the alpha version of the KidKaching platform'
-                            )
-                        )
-                    ),
-                    m(
-                        'div',
-                        { className: 'resume__job' },
-                        m(
-                            'div',
-                            { className: 'resume__job__title' },
-                            m(
-                                'p',
-                                null,
-                                m(
-                                    'span',
-                                    null,
-                                    'TripleLift Solutions'
-                                ),
-                                'Engineering Intern'
-                            ),
-                            m(
-                                'p',
-                                { className: 'resume__job__title--date' },
-                                'Summer 2015'
-                            )
+                            'li',
+                            null,
+                            'Gained experience with and a passion for JS frameworks and SASS'
                         ),
                         m(
-                            'ul',
-                            { className: 'resume__job__details' },
-                            m(
-                                'li',
-                                null,
-                                'On a team of 6 engineers, worked to create interfaces to provide access to integral database information to non engineering teams'
-                            ),
-                            m(
-                                'li',
-                                null,
-                                'Created internal tool to view customizable combinations of marketing metrics for use of Business Development and Sales teams'
-                            ),
-                            m(
-                                'li',
-                                null,
-                                'Constructed complex SQL queries to extract new data that had not been fully evaluated'
-                            ),
-                            m(
-                                'li',
-                                null,
-                                'Developed internal application to analyze performance of specific advertisements when compared to a selection or type of publishers.'
-                            )
+                            'li',
+                            null,
+                            'Helped map out the functionality and UI of the alpha version of the KidKaching platform'
                         )
                     )
                 ),
                 m(
                     'div',
-                    { className: 'resume__projects' },
-                    m(
-                        'h1',
-                        null,
-                        'Projects'
-                    ),
-                    m('span', { className: 'resume__line' }),
+                    { className: 'resume__job' },
                     m(
                         'div',
-                        { className: 'resume__projects__title' },
+                        { className: 'resume__job__title' },
                         m(
                             'p',
                             null,
                             m(
                                 'span',
                                 null,
-                                'ESCSS'
+                                'TripleLift Solutions'
                             ),
-                            'Node ES6 CSS Preprocessor'
-                        )
-                    ),
-                    m(
-                        'ul',
-                        { className: 'resume__projects__details' },
-                        m(
-                            'li',
-                            null,
-                            'A node plugin that allows for full usage of ECMAScript 6 functionailty for full object oriented CSS'
+                            'Engineering Intern'
                         ),
-                        m(
-                            'li',
-                            null,
-                            'Configuration, class based approach to creating styles, perfect for projects in React'
-                        )
-                    ),
-                    m(
-                        'div',
-                        { className: 'resume__projects__title' },
                         m(
                             'p',
-                            null,
-                            m(
-                                'span',
-                                null,
-                                'Mithril CYOA'
-                            ),
-                            'Narrative library for Mithril.js'
+                            { className: 'resume__job__title--date' },
+                            'Summer 2015'
                         )
                     ),
                     m(
                         'ul',
-                        { className: 'resume__projects__details' },
+                        { className: 'resume__job__details' },
                         m(
                             'li',
                             null,
-                            'A choose your own adventure chat library for lightweight JS framework'
+                            'On a team of 6 engineers, worked to create interfaces to provide access to integral database information to non engineering teams'
                         ),
                         m(
                             'li',
                             null,
-                            'Used to build the chat features of this site'
-                        )
-                    ),
-                    m(
-                        'div',
-                        { className: 'resume__projects__title' },
-                        m(
-                            'p',
-                            null,
-                            m(
-                                'span',
-                                null,
-                                'KidKaching Prototype'
-                            ),
-                            'Winner of Round One of BNP International Hackathon 2016'
-                        )
-                    ),
-                    m(
-                        'ul',
-                        { className: 'resume__projects__details' },
-                        m(
-                            'li',
-                            null,
-                            'Early phase prototype for adolescent investment app'
+                            'Created internal tool to view customizable combinations of marketing metrics for use of Business Development and Sales teams'
                         ),
                         m(
                             'li',
                             null,
-                            'Built using SASS, React Flux'
+                            'Constructed complex SQL queries to extract new data that had not been fully evaluated'
+                        ),
+                        m(
+                            'li',
+                            null,
+                            'Developed internal application to analyze performance of specific advertisements when compared to a selection or type of publishers.'
                         )
                     )
+                )
+            ),
+            m(
+                'div',
+                { className: 'resume__projects' },
+                m(
+                    'h1',
+                    null,
+                    'Projects'
                 ),
+                m('span', { className: 'resume__line' }),
                 m(
                     'div',
-                    { className: 'resume__stack' },
-                    m(
-                        'h1',
-                        null,
-                        'Stack'
-                    ),
-                    m('span', { className: 'resume__line' }),
+                    { className: 'resume__projects__title' },
                     m(
                         'p',
                         null,
                         m(
                             'span',
                             null,
-                            'Languages:'
+                            'ESCSS'
                         ),
-                        'Javascript, JSX, ES6, CSS, SASS, HTML5, MySQL, Python, jQuery, Git, Ruby on Rails, MongoDB, PostgreSQL, C and C++'
-                    ),
-                    m(
-                        'p',
-                        null,
-                        m(
-                            'span',
-                            null,
-                            'Media:'
-                        ),
-                        'Sketch, Adobe Photoshop, Final Cut, Microsoft Suite'
-                    ),
-                    m(
-                        'p',
-                        null,
-                        m(
-                            'span',
-                            null,
-                            'Spanish:'
-                        ),
-                        'Full Professional Profciency'
+                        'Node ES6 CSS Preprocessor'
                     )
+                ),
+                m(
+                    'ul',
+                    { className: 'resume__projects__details' },
+                    m(
+                        'li',
+                        null,
+                        'A node plugin that allows for full usage of ECMAScript 6 functionailty for full object oriented CSS'
+                    ),
+                    m(
+                        'li',
+                        null,
+                        'Configuration, class based approach to creating styles, perfect for projects in React'
+                    )
+                ),
+                m(
+                    'div',
+                    { className: 'resume__projects__title' },
+                    m(
+                        'p',
+                        null,
+                        m(
+                            'span',
+                            null,
+                            'Mithril CYOA'
+                        ),
+                        'Narrative library for Mithril.js'
+                    )
+                ),
+                m(
+                    'ul',
+                    { className: 'resume__projects__details' },
+                    m(
+                        'li',
+                        null,
+                        'A choose your own adventure chat library for lightweight JS framework'
+                    ),
+                    m(
+                        'li',
+                        null,
+                        'Used to build the chat features of this site'
+                    )
+                ),
+                m(
+                    'div',
+                    { className: 'resume__projects__title' },
+                    m(
+                        'p',
+                        null,
+                        m(
+                            'span',
+                            null,
+                            'KidKaching Prototype'
+                        ),
+                        'Winner of Round One of BNP International Hackathon 2016'
+                    )
+                ),
+                m(
+                    'ul',
+                    { className: 'resume__projects__details' },
+                    m(
+                        'li',
+                        null,
+                        'Early phase prototype for adolescent investment app'
+                    ),
+                    m(
+                        'li',
+                        null,
+                        'Built using SASS, React Flux'
+                    )
+                )
+            ),
+            m(
+                'div',
+                { className: 'resume__stack' },
+                m(
+                    'h1',
+                    null,
+                    'Stack'
+                ),
+                m('span', { className: 'resume__line' }),
+                m(
+                    'p',
+                    null,
+                    m(
+                        'span',
+                        null,
+                        'Languages:'
+                    ),
+                    'Javascript, JSX, ES6, CSS, SASS, HTML5, MySQL, Python, jQuery, Git, Ruby on Rails, MongoDB, PostgreSQL, C and C++'
+                ),
+                m(
+                    'p',
+                    null,
+                    m(
+                        'span',
+                        null,
+                        'Media:'
+                    ),
+                    'Sketch, Adobe Photoshop, Final Cut, Microsoft Suite'
+                ),
+                m(
+                    'p',
+                    null,
+                    m(
+                        'span',
+                        null,
+                        'Spanish:'
+                    ),
+                    'Full Professional Profciency'
                 )
             )
         )
     );
 };
 
+module.exports = Resume;
+
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var m = __webpack_require__(0);
-var Script = __webpack_require__(8);
+var Script = __webpack_require__(9);
 
 var Chat = {};
 
@@ -2899,7 +2995,7 @@ Chat.view = function () {
 module.exports = Chat;
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2960,7 +3056,7 @@ var Message = function Message(content, side) {
 module.exports = Message;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3003,16 +3099,16 @@ var Responses = function Responses(resps) {
 module.exports = Responses;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var m = __webpack_require__(0);
-var Message = __webpack_require__(6);
-var Responses = __webpack_require__(7);
-var here = __webpack_require__(10);
+var Message = __webpack_require__(7);
+var Responses = __webpack_require__(8);
+var here = __webpack_require__(11);
 
 var Script = {};
 
@@ -3070,7 +3166,7 @@ Script.vm = function () {
                 messages[0].removeClass('loading');
                 m.redraw();
                 vm.animateChat();
-            }, 3000);
+            }, 2000);
         } else {
             vm.responses.appear();
         }
@@ -3113,6 +3209,7 @@ Script.vm = function () {
     };
 
     vm.init = function () {
+        document.title = "Justin Sullivan";
         vm.script = toScript(here);
         vm.home = vm.script;
         vm.continue(vm.script);
@@ -3169,7 +3266,7 @@ Script.view = function () {
 module.exports = Script;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -3197,7 +3294,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -3213,7 +3310,7 @@ module.exports = {
 					"sender": 0,
 					"next": [
 						{
-							"content": "Jobs",
+							"content": "Job Experience",
 							"sender": 1,
 							"next": [
 								{
@@ -3272,7 +3369,7 @@ module.exports = {
 																									]
 																								},
 																								{
-																									"content": "Let's move on",
+																									"content": "Other things please!",
 																									"sender": 1,
 																									"next": [
 																										{
@@ -3312,7 +3409,7 @@ module.exports = {
 							]
 						},
 						{
-							"content": "School",
+							"content": "Your school!",
 							"sender": 1,
 							"next": [
 								{
@@ -3411,11 +3508,6 @@ module.exports = {
 							]
 						},
 						{
-							"content": "Projects",
-							"sender": 1,
-							"next": []
-						},
-						{
 							"content": "GIFS PLEASE!",
 							"sender": 1,
 							"next": [
@@ -3458,15 +3550,15 @@ module.exports = {
 };
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var m = __webpack_require__(0);
-var Front = __webpack_require__(3);;
-var Resume = __webpack_require__(4);
+var Front = __webpack_require__(4);;
+var Resume = __webpack_require__(5);
 window.App = {};
 
 m.route.mode = 'pathname';
