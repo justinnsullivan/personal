@@ -10,8 +10,8 @@ exports.view = function(ctrl, options) {
    	return (
    		<div>
    			<Contact/>
-        	<Hamburger/>
-        	<div className="container">
+        <Hamburger/>
+        <div className="container">
         		<Menu/>
         		<Chat/>
         	</div>

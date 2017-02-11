@@ -1,6 +1,7 @@
 var m = require('mithril')
 var Hamburger = require('../Nav/Hamburger');
 var Menu = require('../Nav/Menu')
+var Contact = require('../Contact')
 
 var Resume = {}
 
@@ -19,6 +20,7 @@ Resume.controller = function (options) {
 Resume.view = function (ctrl, options) {
     return (
         <div class="container">
+            <Contact/>
             <Hamburger/>
             <Menu/>
             <div className="resume main">

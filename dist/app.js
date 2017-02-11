@@ -2512,6 +2512,7 @@ exports.view = function (ctrl, options) {
 var m = __webpack_require__(0);
 var Hamburger = __webpack_require__(2);
 var Menu = __webpack_require__(3);
+var Contact = __webpack_require__(1);
 
 var Resume = {};
 
@@ -2531,6 +2532,7 @@ Resume.view = function (ctrl, options) {
     return m(
         'div',
         { 'class': 'container' },
+        m(Contact, null),
         m(Hamburger, null),
         m(Menu, null),
         m(
