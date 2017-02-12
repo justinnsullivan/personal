@@ -4,7 +4,6 @@
     @include justify-content(flex-start);
     @include align-items(center);
     @include transition(width 0.3s 0.3s);
-    overflow-y: scroll;
     @include e(img){
     	background-image: url('http://i.imgur.com/yvYCH4r.jpg');
     	width: 100%;
