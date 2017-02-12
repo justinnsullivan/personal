@@ -5,6 +5,9 @@
     @include align-items();
     height: 84%;
     overflow-y: scroll;
+    @include mq(small) {
+        height:88%;
+    }
 }
 
 .loader {
@@ -46,11 +49,11 @@
     @include m(bot) {
         &.first {
             border-top-left-radius: 0px;
-            background: lighten($quartz,7%);
+            background: lighten($quartz, 7%);
             margin-left: 0px;
         }
         @extend %message;
-        background: lighten($quartz,7%);
+        background: lighten($quartz, 7%);
         margin-left: 70px;
         @include align-self(flex-start);
         color: palette(primary, dark);
@@ -85,7 +88,7 @@
             display: none;
         }
     }
-    @include e(img){
+    @include e(img) {
         width: 100%;
         height: auto;
     }

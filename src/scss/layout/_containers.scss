@@ -3,13 +3,18 @@
     @include flex-direction(row);
     @include justify-content(flex-start);
     @include align-items(center);
+    @include mq(small) {
+        @include flex-direction(column);
+        @include justify-content(flex-start);
+        @include align-items(center);
+    }
     @include m(chat) {
         @include linear-gradientV($quartz, $lavender);
         @include flexbox();
         @include flex-direction(row);
         @include justify-content(center);
         @include align-items(center);
-        @include transition(width 0.3s 0.3s);
+        @include transition(width 0.3s 0.3s, margin 0.3s 0.3s, height 0.3s 0.3s);
         overflow: hidden;
         z-index: 100;
     }
@@ -23,7 +28,18 @@
 .main {
     width: 100%;
     height: 100%;
+    @include transition(width 0.3s 0.3s, margin 0.3s 0.3s, height 0.3s 0.3s);
     &.retracted {
         width: 75%;
+        margin-left: 25%;
+    }
+    @include mq(small) {
+        @include transition(width 0.3s 0.3s, height 0.3s 0.3s);
+        width: 100%;
+        height: 100%;
+        &.retracted {
+            width: 100%;
+            margin-left: 0;
+        }
     }
 }

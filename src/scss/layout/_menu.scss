@@ -6,6 +6,10 @@ $h-width: 40px;
     position: fixed;
     top: 20px;
     left: 20px;
+    @include mq(small) {
+        top: 3%;
+        position: absolute;
+    }
     z-index: 5000;
     @include transition(0.4s 0.5s);
     @include transform(rotate(0deg));
@@ -16,6 +20,9 @@ $h-width: 40px;
         height: 6px;
         width: 100%;
         background: palette(primary, dark);
+        @include mq(small) {
+            background: palette(primary, x-dark);
+        }
         border-radius: 3px;
         opacity: 1;
         left: 0;
@@ -54,19 +61,34 @@ $h-width: 40px;
 
 .menu {
     height: 100%;
-    width: 0%;
     z-index: 1000;
     @include flexbox();
     @include flex-direction(column);
     @include justify-content(center);
     @include align-items(center);
+    position: fixed;
     background: palette(primary, xx-dark);
-    @include transition(width 0.3s 0.3s, margin-left 0.3s 0.3s, box-shadow 0.3s 0.3s);
+    @include transition(width 0.3s 0.3s, margin-left 0.3s 0.3s, margin-top 0.3s 0.3s, height 0.3s 0.3s, box-shadow 0.3s 0.3s, position 0.3s 0.6s);
     width: 25%;
     margin-left: -25%;
+    @include mq(small) {
+        height: 40%;
+        width: 100%;
+        margin-left:0;
+        margin-top: -40vh;
+    }
     &.extended {
         margin-left: 0;
-        @include box-shadow(13px, 0px, 40px, -6px, palette(primary, x-dark));
+        width:25%;
+        @include box-shadow(13px, 0px, 40px, -6px,rgba($black,0.4));
+        @include mq(small) {
+            margin-top: 0px;
+            position:relative;
+            @include box-shadow(0px, 0px, 0px, 0px, palette(primary, xx-dark));
+        }
+    }
+    &.fixed {
+
     }
     @include e(button) {
         @include m(resume) {

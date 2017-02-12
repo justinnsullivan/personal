@@ -3,16 +3,24 @@
     @include flex-direction(column);
     @include justify-content(flex-start);
     @include align-items(center);
-    @include transition(width 0.3s 0.3s);
-    @include e(img){
-    	background-image: url('http://i.imgur.com/yvYCH4r.jpg');
-    	width: 100%;
-    	min-height: 60%;
-    	background-repeat: no-repeat;
-    	background-position: center;
-    	background-size: 100vw auto;
-    	display:block;
-    	@include box-shadow(0px, 2px, 20px, 5px, rgba($grey, 0.8));
+    @include transition(width 0.3s 0.3s, height 0.3s 0.3s, margin 0.3s 0.3s, transform 0.3s 0.3s);
+    @include e(img) {
+        background-image: url('http://i.imgur.com/yvYCH4r.jpg');
+        width: 100%;
+        min-height: 60%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100vw auto;
+        display: block;
+        @include box-shadow(0px,
+        2px,
+        20px,
+        5px,
+        rgba($grey, 0.8));
+        @include mq(small) {
+            min-height: 40%;
+            background-size: 150vw auto;
+        }
     }
     @include e(header) {
         width: 400px;
@@ -21,6 +29,11 @@
         border-radius: 1px;
         margin-top: 50px;
         margin-bottom: 50px;
+        @include mq(small) {
+            height:auto;
+            width:60%;
+            padding: 50px;
+        }
         @include e(name) {
             text-align: center;
             font-size: 52px;
@@ -33,6 +46,10 @@
             @include flex-wrap(wrap);
             @include justify-content(center);
             @include align-items(center);
+            @include mq(small) {
+                width: 70%;
+                margin-left: 15%;
+            }
             & p {
                 color: $white;
                 margin-left: 5px;
@@ -104,7 +121,7 @@
         @extend %ressection;
         margin-bottom: 10px;
         & p {
-        	@extend %res-inl-details;
+            @extend %res-inl-details;
         }
         & span {
             @extend %res-details-span;

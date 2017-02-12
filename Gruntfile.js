@@ -44,6 +44,9 @@ module.exports = function(grunt) {
                 files: ['Gruntfile.js']
             },
             sass: {
+                options: {
+                    reload: false
+                },
                 files: './src/scss/**/*.scss',
                 tasks: ['sass']
             },

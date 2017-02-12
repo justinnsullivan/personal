@@ -3,6 +3,7 @@
     font-family: $font-family--primary;
     font-weight: $font-weight--regular;
     border-radius: 12px;
+    font-size: 16px;
     padding: 12px 20px;
     margin-bottom: 10px;
     display: block;
@@ -16,6 +17,10 @@
     }
     &.fadeIn {
         @include animation(fadeInUp2 0.5s ease);
+    }
+    @include mq(small) {
+        max-width: 62%;
+        font-size: 16px;
     }
 }
 
@@ -40,6 +45,9 @@
 %ressection {
     width: 80%;
     margin-bottom: 7px;
+    @include mq(small) {
+        width: 90%;
+    }
 }
 
 %res-title {
@@ -52,6 +60,10 @@
     font-family: $font-family--primary;
     font-weight: $font-weight--light;
     color: palette(primary, x-dark);
+    @include mq(small) {
+        line-height: 20px;
+        font-size: 18px;
+    }
 }
 
 %res-title-span {
@@ -60,6 +72,10 @@
     line-height: 24px;
     font-size: 26px;
     margin-right: 15px;
+    @include mq(small) {
+        line-height: 20px;
+        font-size: 18px;
+    }
 }
 
 %res-date {
@@ -68,15 +84,26 @@
 
 %res-inl-details {
     font-size: 18px;
+    @include mq(small) {
+        line-height: 20px;
+        font-size: 18px;
+    }
     font-family: $font-family--primary;
     font-weight: $font-weight--light;
     color: palette(primary, x-dark);
+    @include mq(small) {
+        line-height: 20px;
+        font-size: 14px;
+    }
 }
 
 %res-details-span {
-    font-weight: $font-weight--bold;
-    font-size: 18px;
     margin-right: 15px;
+    font-weight: $font-weight--bold;
+    @include mq(small) {
+        line-height: 20px;
+        font-size: 14px;
+    }
 }
 
 %res-details {
@@ -85,5 +112,8 @@
     font-family: $font-family--primary;
     font-weight: $font-weight--light;
     color: palette(primary, x-dark);
+    @include mq(small) {
+        line-height: 20px;
+        font-size: 14px;
+    }
 }
-

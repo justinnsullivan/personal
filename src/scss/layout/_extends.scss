@@ -16,4 +16,7 @@
         background: darken(#6D86F7, 6%);
     }
     @include transition(width 0.3s 0.3s, box-shadow 0.3s 0.3s, opacity 0.3s 0.3s, background 0.4s 0.2s);
+    @include mq(small) {
+        font-size:36px;
+    }
 }
