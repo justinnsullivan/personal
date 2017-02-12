@@ -276,7 +276,8 @@ a {
       height: 40%;
       width: 100%;
       margin-left: 0;
-      margin-top: -40vh; } }
+      margin-top: -40vh;
+      position: relative; } }
   .menu.extended {
     margin-left: 0;
     width: 25%;
@@ -287,6 +288,7 @@ a {
       .menu.extended {
         margin-top: 0px;
         position: relative;
+        width: 100%;
         -webkit-box-shadow: 0px 0px 0px 0px #2c3441;
         -moz-box-shadow: 0px 0px 0px 0px #2c3441;
         box-shadow: 0px 0px 0px 0px #2c3441; } }
