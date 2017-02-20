@@ -4128,7 +4128,7 @@ module.exports = function(module) {
 /***/ (function(module, exports) {
 
 module.exports = {
-	"content": "Hi there, Im Justin! Welcome to my presonal website. I'm a Front End Developer from New York and a recent grad from Tufts University up in Bah-ston.",
+	"content": "Hi there, Im Justin! Welcome to my personal website. I'm a Front End Developer from New York and a recent grad from Tufts University up in Bah-ston.",
 	"sender": 0,
 	"next": [
 		{
@@ -4184,11 +4184,11 @@ module.exports = {
 																											"sender": 0,
 																											"next": [
 																												{
-																													"content": "I worked to rehaul their CSS implemting SASS with BEM and SMACSS methodologies, in addition to developing various tools in Angular.JS ",
+																													"content": "I worked to rehaul their CSS implementing SASS with BEM and SMACSS methodologies, in addition to developing various tools in Angular.JS ",
 																													"sender": 0,
 																													"next": [
 																														{
-																															"content": "If you'd like to see my full resumé make sure to click on the hamburger in the top left corner.",
+																															"content": "If you would like to see my full resumé make sure to click on the hamburger in the top left corner.",
 																															"sender": 0,
 																															"next": []
 																														}
@@ -4251,7 +4251,7 @@ module.exports = {
 											"sender": 0,
 											"next": [
 												{
-													"content": "My coursework was varied and rigorous including: Computational Theory, Web Engineering, Algorithims and Natural Language Processing ",
+													"content": "My coursework was varied and rigorous including: Computational Theory, Web Engineering, Algorithms and Natural Language Processing ",
 													"sender": 0,
 													"next": [
 														{
@@ -4275,7 +4275,7 @@ module.exports = {
 																							"sender": 0,
 																							"next": [
 																								{
-																									"content": "Any extra-curriculars?",
+																									"content": "Any extracurriculars?",
 																									"sender": 1,
 																									"next": [
 																										{
@@ -4283,11 +4283,11 @@ module.exports = {
 																											"sender": 0,
 																											"next": [
 																												{
-																													"content": "Additioanlly I was a member of the Tufts University Beelzebubs, Tufts oldest a ccappella group!",
+																													"content": "Additionally I was a member of the Tufts University Beelzebubs, Tufts oldest a cappella group!",
 																													"sender": 0,
 																													"next": [
 																														{
-																															"content": "As you can see like most engineers I sort of live to 'over-commit' myself",
+																															"content": "As you can see like most engineers I sort of live to 'over-commit' myself. To learn more about my experience at Tufts, check out my resume by clicking the menu button in the top left!",
 																															"sender": 0,
 																															"next": []
 																														}
