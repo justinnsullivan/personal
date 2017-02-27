@@ -8,6 +8,13 @@
     @include mq(small) {
         height:88%;
     }
+    @include e(spacer){
+        margin: 20px 5%;
+        height: 1px;
+        width: 90%;
+        background: palette(grey, light);
+        display: block;
+    }
 }
 
 .loader {

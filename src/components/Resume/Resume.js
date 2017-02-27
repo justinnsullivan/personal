@@ -51,22 +51,22 @@ Resume.view = function (ctrl, options) {
                     <span className="resume__line" />
                     <div className="resume__job">
                         <div className="resume__job__title">
-                            <p><span>Mimir</span>Front End Engineer Contractor</p>
+                            <p><span>Acenna Data</span>Front End Engineer Contractor</p>
                             <p className="resume__job__title--date">Current</p>
                         </div>
                         <ul className="resume__job__details">
                             <li>Reorganized CSS, converting thier previous system to SASS with a BEM and SMACSS methodology</li>
-                            <li>Completed various Front End projects with a combination of Angular and Django</li>
-                            <li>Consulted with company on direction and standards for Front End code going forward</li>
+                            <li>Completed various front end projects with a combination of Angular and Django</li>
+                            <li>Consulted with company on direction and standards for front end code going forward</li>
                         </ul>
                     </div>
                     <div className="resume__job">
                         <div className="resume__job__title">
-                            <p><span>Tufts University</span>Web Engineering and Computational Theory TA</p>
+                            <p><span>Tufts University</span>TA for Web Engineering and Computational Theory</p>
                             <p className="resume__job__title--date">Current</p>
                         </div>
                         <ul className="resume__job__details">
-                            <li>Taught lecture on computer theory and proof writing, developed lesson plan</li>
+                            <li>Lead lectures on computer theory and proof writing, developed lesson plan</li>
                             <li>Assisted students in debugging code and talking through the direction of web application projects</li>
                             <li>Graded computational proofs and web applications in various stages</li>
                             <li>Helped to craft the courses to keep the students in mind</li>
@@ -78,7 +78,7 @@ Resume.view = function (ctrl, options) {
                             <p className="resume__job__title--date">Summer 2016</p>
                         </div>
                         <ul className="resume__job__details">
-                            <li>Designed/Created a Parallax homepage with a custom narrative to encourage young kids to learn about investing</li>
+                            <li>Designed/Created a parallax homepage with a custom narrative to encourage young kids to learn about investing</li>
                             <li>Attended and won the first round of the BNP Paribas International Hackathon, created a prototype using React</li>
                             <li>Gained experience with and a passion for JS frameworks and SASS</li>
                             <li>Helped map out the functionality and UI of the alpha version of the KidKaching platform</li>
@@ -90,10 +90,10 @@ Resume.view = function (ctrl, options) {
                             <p className="resume__job__title--date">Summer 2015</p>
                         </div>
                         <ul className="resume__job__details">
-                            <li>On a team of 6 engineers, worked to create interfaces to provide access to integral database information to non engineering teams</li>
+                            <li>On a team of 6 engineers, worked to create interfaces to provide access to integral database information to non-engineering teams</li>
                             <li>Created internal tool to view customizable combinations of marketing metrics for use of Business Development and Sales teams</li>
                             <li>Constructed complex SQL queries to extract new data that had not been fully evaluated</li>
-                            <li>Developed internal application to analyze performance of specific advertisements when compared to a selection or type of publishers.</li>
+                            <li>Developed internal application to analyze performance of specific advertisements when compared to a selection or type of publishers</li>
                         </ul>
                     </div>
                 </div>
@@ -106,14 +106,14 @@ Resume.view = function (ctrl, options) {
                     </div>
                     <ul className="resume__projects__details">
                         <li>A node plugin that allows for full usage of ECMAScript 6 functionailty for full object oriented CSS</li>
-                        <li>Configuration, class based approach to creating styles, perfect for projects in React</li>
+                        <li>Configuration, class based approach to creating JS application styles</li>
                     </ul>
                     <div className="resume__projects__title">
                         <p><span>Mithril CYOA</span>Narrative library for Mithril.js</p>
                     </div>
                     <ul className="resume__projects__details">
                         <li>A choose your own adventure chat library for lightweight JS framework</li>
-                        <li>Used to build the chat features of this site</li>
+                        <li>Used to build the chat features of my personal website</li>
                     </ul>
                     <div className="resume__projects__title">
                         <p><span>KidKaching Prototype</span>Winner of Round One of BNP International Hackathon 2016</p>
@@ -129,7 +129,6 @@ Resume.view = function (ctrl, options) {
                     <p><span>Languages:</span>Javascript, JSX, ES6, CSS, SASS, HTML5, MySQL, Python, jQuery, Git, Ruby on Rails, MongoDB, PostgreSQL, C and C++</p>
                     <p><span>Media:</span>Sketch, Adobe Photoshop, Final Cut, Microsoft Suite</p>
                     <p><span>Spanish:</span>Full Professional Profciency</p>
-                    
                 </div>
             </div>
         </div>

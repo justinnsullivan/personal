@@ -651,6 +651,12 @@ a {
   @media only screen and (min-width: 1px) and (max-width: 900px), only screen and (min-device-width: 1px) and (max-device-width: 900px) {
     .messages {
       height: 88%; } }
+  .messages__spacer {
+    margin: 20px 5%;
+    height: 1px;
+    width: 90%;
+    background: #8e939a;
+    display: block; }
 
 .loader__line {
   display: inline-block;

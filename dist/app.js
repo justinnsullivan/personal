@@ -2668,7 +2668,7 @@ Resume.view = function (ctrl, options) {
                             m(
                                 'span',
                                 null,
-                                'Mimir'
+                                'Acenna Data'
                             ),
                             'Front End Engineer Contractor'
                         ),
@@ -2689,12 +2689,12 @@ Resume.view = function (ctrl, options) {
                         m(
                             'li',
                             null,
-                            'Completed various Front End projects with a combination of Angular and Django'
+                            'Completed various front end projects with a combination of Angular and Django'
                         ),
                         m(
                             'li',
                             null,
-                            'Consulted with company on direction and standards for Front End code going forward'
+                            'Consulted with company on direction and standards for front end code going forward'
                         )
                     )
                 ),
@@ -2712,7 +2712,7 @@ Resume.view = function (ctrl, options) {
                                 null,
                                 'Tufts University'
                             ),
-                            'Web Engineering and Computational Theory TA'
+                            'TA for Web Engineering and Computational Theory'
                         ),
                         m(
                             'p',
@@ -2726,7 +2726,7 @@ Resume.view = function (ctrl, options) {
                         m(
                             'li',
                             null,
-                            'Taught lecture on computer theory and proof writing, developed lesson plan'
+                            'Lead lectures on computer theory and proof writing, developed lesson plan'
                         ),
                         m(
                             'li',
@@ -2773,7 +2773,7 @@ Resume.view = function (ctrl, options) {
                         m(
                             'li',
                             null,
-                            'Designed/Created a Parallax homepage with a custom narrative to encourage young kids to learn about investing'
+                            'Designed/Created a parallax homepage with a custom narrative to encourage young kids to learn about investing'
                         ),
                         m(
                             'li',
@@ -2820,7 +2820,7 @@ Resume.view = function (ctrl, options) {
                         m(
                             'li',
                             null,
-                            'On a team of 6 engineers, worked to create interfaces to provide access to integral database information to non engineering teams'
+                            'On a team of 6 engineers, worked to create interfaces to provide access to integral database information to non-engineering teams'
                         ),
                         m(
                             'li',
@@ -2835,7 +2835,7 @@ Resume.view = function (ctrl, options) {
                         m(
                             'li',
                             null,
-                            'Developed internal application to analyze performance of specific advertisements when compared to a selection or type of publishers.'
+                            'Developed internal application to analyze performance of specific advertisements when compared to a selection or type of publishers'
                         )
                     )
                 )
@@ -2874,7 +2874,7 @@ Resume.view = function (ctrl, options) {
                     m(
                         'li',
                         null,
-                        'Configuration, class based approach to creating styles, perfect for projects in React'
+                        'Configuration, class based approach to creating JS application styles'
                     )
                 ),
                 m(
@@ -2902,7 +2902,7 @@ Resume.view = function (ctrl, options) {
                     m(
                         'li',
                         null,
-                        'Used to build the chat features of this site'
+                        'Used to build the chat features of my personal website'
                     )
                 ),
                 m(
@@ -3026,8 +3026,13 @@ module.exports = Chat;
 
 
 var m = __webpack_require__(0);
-// var loader = m('div', { class: 'activel loader' }, [
-var load_m = m('div', { class: 'activel loader' }, [m('div', { class: 'loader__line' }), m('div', { class: 'loader__line' }), m('div', { class: 'loader__line' })]);
+var load_m = m(
+    'div',
+    { className: 'activel loader' },
+    m('div', { className: 'loader__line' }),
+    m('div', { className: 'loader__line' }),
+    m('div', { className: 'loader__line' })
+);
 
 var Message = function Message(content, side) {
     this.content = m.prop(content);
@@ -3053,7 +3058,7 @@ var Message = function Message(content, side) {
         var loader = load_m;
         if (!this.containsClass('loading')) loader = '';
         if (content.indexOf('.gif') != -1 || content.indexOf('.png') != -1 || content.indexOf('.jpg') != -1) {
-            content = m('img', { src: content, class: 'message__img' });
+            content = m('img', { src: content, className: 'message__img' });
         }
         if (index == 0 || messages[index - 1].side() != this.side()) {
             var temp = this.class.replace('bot ', 'imgB');
@@ -3064,13 +3069,66 @@ var Message = function Message(content, side) {
             }
             if (this.side() == 0) {
                 var temp = this.class.replace('bot', 'imgB').replace('loading', '');
-                element = m('div', { class: 'block' }, [m('div', { class: temp }, [m('img', { class: 'avatar--bot' }), m('div', { class: this.class }, [m('span', [loader, m('p', content)])])])]);
+                element = m(
+                    'div',
+                    { className: 'block' },
+                    m(
+                        'div',
+                        { className: temp },
+                        m('img', { className: 'avatar--bot' }),
+                        m(
+                            'div',
+                            { className: this.class },
+                            m(
+                                'span',
+                                null,
+                                loader,
+                                m(
+                                    'p',
+                                    null,
+                                    content
+                                )
+                            )
+                        )
+                    )
+                );
             } else {
                 var temp = this.class.replace('user', 'imgU');
-                element = m('div', { class: 'block' }, [m('div', { class: temp }, [m('div', { class: this.class }, [m('span', m('p', content))]), m('img', { class: 'avatar--user' })])]);
+                element = m(
+                    'div',
+                    { className: 'block' },
+                    m(
+                        'div',
+                        { className: temp },
+                        m(
+                            'div',
+                            { className: this.class },
+                            m(
+                                'span',
+                                null,
+                                loader,
+                                m(
+                                    'p',
+                                    null,
+                                    content
+                                )
+                            )
+                        ),
+                        m('img', { className: 'avatar--user' })
+                    )
+                );
             }
         } else {
-            element = m('div', { class: this.class }, [loader, m('p', content)]);
+            element = m(
+                'div',
+                { className: this.class },
+                loader,
+                m(
+                    'p',
+                    null,
+                    content
+                )
+            );
         }
 
         return element;
@@ -3132,8 +3190,8 @@ module.exports = Responses;
 var m = __webpack_require__(0);
 var Message = __webpack_require__(7);
 var Responses = __webpack_require__(8);
-var here = __webpack_require__(19);
-
+var json = __webpack_require__(19);
+var origin;
 var Script = {};
 
 var Story = function Story(content, sender, next) {
@@ -3175,9 +3233,8 @@ var n = 0;
 Script.vm = function () {
     var vm = {};
     vm.messages = new Script.Messages();
-    vm.script = new Story();
+    vm.script;
     vm.responses = new Responses([], 'responses waiting');
-
     vm.animateChat = function () {
         scrollToRecent();
         var messages = vm.messages.filter(isLoading);
@@ -3196,6 +3253,8 @@ Script.vm = function () {
         }
     };
 
+    vm.addLine = function () {};
+
     vm.choose = function (response, index) {
         vm.responses.disappear();
         vm.messages.push(lineToMessage(response));
@@ -3208,17 +3267,15 @@ Script.vm = function () {
             vm.continue(response);
         }, 500);
     };
-
     vm.continue = function (line) {
         vm.current = line;
-        if (line.sender() == 0) {
-            vm.messages.push(lineToMessage(line));
-        }
+
         if (line.content() == "What else would you like to know about me?") {
             vm.home = line;
         }
-
-        vm.animateChat();
+        if (line.sender() == 0) {
+            vm.messages.push(lineToMessage(line));
+        }
         if (line.next().length == 0) {
             vm.continue(vm.home);
         } else if (line.next().length == 1) {
@@ -3230,13 +3287,19 @@ Script.vm = function () {
             }
             vm.responses = new Responses(temp, 'responses waiting');
         }
+        vm.animateChat();
     };
 
     vm.init = function () {
         document.title = "Justin Sullivan";
-        vm.script = toScript(here);
-        vm.home = vm.script;
-        vm.continue(vm.script);
+        if (!vm.script) {
+            vm.script = toScript(json);
+            vm.home = vm.script;
+            vm.continue(vm.script);
+        } else {
+            console.log('ihi');
+            vm.continue(vm.home);
+        }
     };
     return vm;
 }();
@@ -3254,8 +3317,11 @@ Script.view = function () {
         var words = resp.content();
         return m(
             'div',
-            { className: 'response', onclick: Script.vm.choose.bind(Script.vm.choose, resp, index) },
-            words
+            { className: 'response',
+                onclick: Script.vm.choose.bind(Script.vm.choose, resp, index) },
+            ' ',
+            words,
+            ' '
         );
     });
     return m(
@@ -3267,7 +3333,7 @@ Script.view = function () {
             m(
                 'div',
                 { className: 'chat__header' },
-                'Justin Sullivan'
+                ' Justin Sullivan '
             ),
             m(
                 'div',
@@ -4132,7 +4198,7 @@ module.exports = {
 	"sender": 0,
 	"next": [
 		{
-			"content": "People have described me as a: podcast addict, recipe sleuth, forest dweller, code forager and emoji amture",
+			"content": "People have described me as a: podcast addict, recipe sleuth, forest dweller, code forager and emoji amature",
 			"sender": 0,
 			"next": [
 				{
