@@ -100,6 +100,13 @@ $h-width: 40px;
                 background: palette(primary, xx-dark);
             }
         }
+        @include m(projects) {
+            @extend %menu__button;
+            background: darken(#FCEFC4, 6%);
+            &:hover {
+                background: darken(#FCEFC4, 12%);
+            }
+        }
         @include m(home) {
             @extend %menu__button;
             background: $cosmos;
@@ -109,7 +116,6 @@ $h-width: 40px;
         }
         @include m(contact) {
             @extend %menu__button;
-            height: 34%;
             background: $sprout;
             &:hover {
                 background: darken($sprout, 6%);

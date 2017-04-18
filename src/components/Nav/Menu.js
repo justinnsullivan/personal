@@ -8,6 +8,9 @@ Menu.vm = (function() {
     vm.toRes = function(){
     	m.route("/resume");
     }
+    vm.toPro = function(){
+        m.route("/projects");
+    }
     vm.toHome = function(){
     	m.route("/");
     }
@@ -22,6 +25,7 @@ Menu.view = function() {
 		<div className='menu'>
 			<div className='menu__button--home' onclick={Menu.vm.toHome.bind()}>HOME</div>
 			<div className='menu__button--resume' onclick={Menu.vm.toRes.bind()}>RESUME</div>
+            <div className='menu__button--projects' onclick={Menu.vm.toPro.bind()}>PROJECTS</div>
 			<div className='menu__button--contact' onclick={Contact.vm.toggleContact.bind()}>CONTACT</div>
 		</div>
 	)

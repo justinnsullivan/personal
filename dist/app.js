@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 20);
+/******/ 	return __webpack_require__(__webpack_require__.s = 21);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -2305,7 +2305,7 @@
 	return m
 }); // eslint-disable-line
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(18)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19)(module)))
 
 /***/ }),
 /* 1 */
@@ -2315,7 +2315,7 @@
 
 
 var m = __webpack_require__(0);
-var Clipboard = __webpack_require__(11);
+var Clipboard = __webpack_require__(12);
 
 var Contact = {};
 
@@ -2462,6 +2462,9 @@ Menu.vm = function () {
   vm.toRes = function () {
     m.route("/resume");
   };
+  vm.toPro = function () {
+    m.route("/projects");
+  };
   vm.toHome = function () {
     m.route("/");
   };
@@ -2486,6 +2489,11 @@ Menu.view = function () {
     ),
     m(
       'div',
+      { className: 'menu__button--projects', onclick: Menu.vm.toPro.bind() },
+      'PROJECTS'
+    ),
+    m(
+      'div',
       { className: 'menu__button--contact', onclick: Contact.vm.toggleContact.bind() },
       'CONTACT'
     )
@@ -2503,7 +2511,7 @@ module.exports = Menu;
 
 var m = __webpack_require__(0);
 var Hamburger = __webpack_require__(2);
-var Chat = __webpack_require__(6);
+var Chat = __webpack_require__(7);
 var Menu = __webpack_require__(3);
 var Contact = __webpack_require__(1);
 
@@ -2526,6 +2534,176 @@ exports.view = function (ctrl, options) {
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var m = __webpack_require__(0);
+var Hamburger = __webpack_require__(2);
+var Menu = __webpack_require__(3);
+var Contact = __webpack_require__(1);
+
+var Projects = {};
+
+Projects.vm = function () {
+    var vm = {};
+    vm.toHome = function () {
+        m.route("/");
+    };
+    vm.newTab = function (url) {
+        window.open(url, '_blank');
+    };
+    vm.init = function () {
+        document.title = "Projects - Justin Sullivan";
+    };
+    return vm;
+}();
+
+Projects.controller = function (options) {
+    Projects.vm.init();
+};
+
+Projects.view = function (ctrl, options) {
+    return m(
+        'div',
+        null,
+        m(Hamburger, null),
+        m(
+            'div',
+            { className: 'container' },
+            m(Menu, null),
+            m(
+                'div',
+                { 'class': 'projects main' },
+                m(
+                    'div',
+                    { 'class': 'projects__title' },
+                    'PROJECTS'
+                ),
+                m(
+                    'div',
+                    { 'class': 'projects__card', onclick: Projects.vm.newTab.bind(this, 'https://congressapp-2b534.firebaseapp.com/') },
+                    m(
+                        'div',
+                        { 'class': 'projects__card__title' },
+                        m(
+                            'p',
+                            null,
+                            'Congress App'
+                        ),
+                        m(
+                            'span',
+                            null,
+                            'App to analyze Congress data built using React, Redux and SASS'
+                        )
+                    ),
+                    m('img', { 'class': 'projects__card__img', src: 'https://i.imgur.com/kpqO0du.png' })
+                ),
+                m(
+                    'div',
+                    { 'class': 'projects__card', onclick: Projects.vm.newTab.bind(this, 'https://jumbosmash-b5e5e.firebaseapp.com/') },
+                    m(
+                        'div',
+                        { 'class': 'projects__card__title' },
+                        m(
+                            'p',
+                            null,
+                            'JumboSmash'
+                        ),
+                        m(
+                            'span',
+                            null,
+                            'Parllax Landing Page for Tufs Dating App'
+                        )
+                    ),
+                    m('img', { 'class': 'projects__card__img', src: 'https://i.imgur.com/gtQY31R.png' })
+                ),
+                m(
+                    'div',
+                    { 'class': 'projects__card', onclick: Projects.vm.newTab.bind(this, 'https://github.com/justinnsullivan/escss') },
+                    m('img', { 'class': 'projects__card__img', src: 'http://www.devacron.com/wp-content/uploads/2016/02/ES6-ecmascript6-logo.jpg' }),
+                    m(
+                        'div',
+                        { 'class': 'projects__card__title' },
+                        m(
+                            'p',
+                            null,
+                            'EScss'
+                        ),
+                        m(
+                            'span',
+                            null,
+                            'CSS Preprocessor to Create Style with ES6'
+                        )
+                    )
+                ),
+                m(
+                    'div',
+                    { 'class': 'projects__card', onclick: Projects.vm.toHome.bind() },
+                    m(
+                        'div',
+                        { 'class': 'projects__card__title' },
+                        m(
+                            'p',
+                            null,
+                            'Personal Site'
+                        ),
+                        m(
+                            'span',
+                            null,
+                            'Lightweight CYOA Chat App'
+                        )
+                    ),
+                    m('img', { 'class': 'projects__card__img', src: 'https://i.imgur.com/i7QSfFY.png' })
+                ),
+                m(
+                    'div',
+                    { 'class': 'projects__card', onclick: Projects.vm.newTab.bind(this, 'http://kidkaching.herokuapp.com/') },
+                    m(
+                        'div',
+                        { 'class': 'projects__card__title' },
+                        m(
+                            'p',
+                            null,
+                            'KidKaching'
+                        ),
+                        m(
+                            'span',
+                            null,
+                            'Parllax Narrative Landing Page'
+                        )
+                    ),
+                    m('img', { 'class': 'projects__card__img', src: 'https://i.imgur.com/fyssA0P.png' })
+                ),
+                m(
+                    'div',
+                    { 'class': 'projects__card', onclick: Projects.vm.newTab.bind(this, 'https://flat-invest-widget.herokuapp.com/') },
+                    m(
+                        'div',
+                        { 'class': 'projects__card__title' },
+                        m(
+                            'p',
+                            null,
+                            'Investment Widget'
+                        ),
+                        m(
+                            'span',
+                            null,
+                            'Widget to Illustrate Value of Investing'
+                        )
+                    ),
+                    m('img', { 'class': 'projects__card__img', src: 'https://i.imgur.com/tOFLBEC.png' })
+                )
+            )
+        )
+    );
+};
+
+module.exports = Projects;
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2886,9 +3064,9 @@ Resume.view = function (ctrl, options) {
                         m(
                             'span',
                             null,
-                            'Mithril CYOA'
+                            'Congress Widget'
                         ),
-                        'Narrative library for Mithril.js'
+                        'Visualization App for Congressional Data'
                     )
                 ),
                 m(
@@ -2897,12 +3075,12 @@ Resume.view = function (ctrl, options) {
                     m(
                         'li',
                         null,
-                        'A choose your own adventure chat library for lightweight JS framework'
+                        'Using ProPublica\'s official Congress API created a tool for viewing congress data'
                     ),
                     m(
                         'li',
                         null,
-                        'Used to build the chat features of my personal website'
+                        'Created with React, Redux and SASS'
                     )
                 ),
                 m(
@@ -2951,7 +3129,7 @@ Resume.view = function (ctrl, options) {
                         null,
                         'Languages:'
                     ),
-                    'Javascript, JSX, ES6, CSS, SASS, HTML5, MySQL, Python, jQuery, Git, Ruby on Rails, MongoDB, PostgreSQL, C and C++'
+                    'Javascript, React, Redux, JSX, ES6, Angular.js, CSS, SASS, HTML5, MySQL, Python, jQuery, Git, MongoDB, PHP, PostgreSQL'
                 ),
                 m(
                     'p',
@@ -2981,14 +3159,14 @@ Resume.view = function (ctrl, options) {
 module.exports = Resume;
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var m = __webpack_require__(0);
-var Script = __webpack_require__(9);
+var Script = __webpack_require__(10);
 
 var Chat = {};
 
@@ -3019,7 +3197,7 @@ Chat.view = function () {
 module.exports = Chat;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3138,7 +3316,7 @@ var Message = function Message(content, side) {
 module.exports = Message;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3181,16 +3359,16 @@ var Responses = function Responses(resps) {
 module.exports = Responses;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var m = __webpack_require__(0);
-var Message = __webpack_require__(7);
-var Responses = __webpack_require__(8);
-var json = __webpack_require__(19);
+var Message = __webpack_require__(8);
+var Responses = __webpack_require__(9);
+var json = __webpack_require__(20);
 var origin;
 var Script = {};
 
@@ -3356,12 +3534,12 @@ Script.view = function () {
 module.exports = Script;
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
     if (true) {
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(16)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(17)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -3592,12 +3770,12 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
     if (true) {
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(10), __webpack_require__(17), __webpack_require__(15)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(11), __webpack_require__(18), __webpack_require__(16)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -3799,7 +3977,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 var DOCUMENT_NODE_TYPE = 9;
@@ -3835,10 +4013,10 @@ module.exports = closest;
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var closest = __webpack_require__(12);
+var closest = __webpack_require__(13);
 
 /**
  * Delegates event to a selector.
@@ -3885,7 +4063,7 @@ module.exports = delegate;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 /**
@@ -3940,11 +4118,11 @@ exports.fn = function(value) {
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var is = __webpack_require__(14);
-var delegate = __webpack_require__(13);
+var is = __webpack_require__(15);
+var delegate = __webpack_require__(14);
 
 /**
  * Validates all params and calls the right
@@ -4041,7 +4219,7 @@ module.exports = listen;
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 function select(element) {
@@ -4090,7 +4268,7 @@ module.exports = select;
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 function E () {
@@ -4162,7 +4340,7 @@ module.exports = E;
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -4190,7 +4368,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -4446,7 +4624,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4454,7 +4632,8 @@ module.exports = {
 
 var m = __webpack_require__(0);
 var Front = __webpack_require__(4);;
-var Resume = __webpack_require__(5);
+var Resume = __webpack_require__(6);
+var Projects = __webpack_require__(5);
 window.App = {};
 
 m.route.mode = 'pathname';
@@ -4467,6 +4646,11 @@ m.route(document.getElementById('app'), '/', {
     '/resume': {
         view: function view(ctrl) {
             return m('.app', [m(Resume, null)]);
+        }
+    },
+    '/projects': {
+        view: function view(ctrl) {
+            return m('.app', [m(Projects, null)]);
         }
     }
 

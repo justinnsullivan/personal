@@ -109,11 +109,11 @@ Resume.view = function (ctrl, options) {
                         <li>Configuration, class based approach to creating JS application styles</li>
                     </ul>
                     <div className="resume__projects__title">
-                        <p><span>Mithril CYOA</span>Narrative library for Mithril.js</p>
+                        <p><span>Congress Widget</span>Visualization App for Congressional Data</p>
                     </div>
                     <ul className="resume__projects__details">
-                        <li>A choose your own adventure chat library for lightweight JS framework</li>
-                        <li>Used to build the chat features of my personal website</li>
+                        <li>Using ProPublica's official Congress API created a tool for viewing congress data</li>
+                        <li>Created with React, Redux and SASS</li>
                     </ul>
                     <div className="resume__projects__title">
                         <p><span>KidKaching Prototype</span>Winner of Round One of BNP International Hackathon 2016</p>
@@ -126,7 +126,7 @@ Resume.view = function (ctrl, options) {
                 <div className="resume__stack">
                     <h1>Stack</h1>
                     <span className="resume__line" />
-                    <p><span>Languages:</span>Javascript, JSX, ES6, CSS, SASS, HTML5, MySQL, Python, jQuery, Git, Ruby on Rails, MongoDB, PostgreSQL, C and C++</p>
+                    <p><span>Languages:</span>Javascript, React, Redux, JSX, ES6, Angular.js, CSS, SASS, HTML5, MySQL, Python, jQuery, Git, MongoDB, PHP, PostgreSQL</p>
                     <p><span>Media:</span>Sketch, Adobe Photoshop, Final Cut, Microsoft Suite</p>
                     <p><span>Spanish:</span>Full Professional Profciency</p>
                 </div>
