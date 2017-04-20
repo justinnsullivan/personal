@@ -51,13 +51,13 @@ Resume.view = function (ctrl, options) {
                     <span className="resume__line" />
                     <div className="resume__job">
                         <div className="resume__job__title">
-                            <p><span>Acenna Data</span>Front End Engineer Contractor</p>
+                            <p><span>Acenna Data</span>Front-End Engineer Contractor</p>
                             <p className="resume__job__title--date">Current</p>
                         </div>
                         <ul className="resume__job__details">
-                            <li>Reorganized CSS, converting thier previous system to SASS with a BEM and SMACSS methodology</li>
-                            <li>Completed various front end projects with a combination of Angular and Django</li>
-                            <li>Consulted with company on direction and standards for front end code going forward</li>
+                            <li>Reorganized CSS, converting vanilla CSS to SASS with a BEM and SMACSS methodology</li>
+                            <li>Completed various front-end projects with a combination of Angular and Django</li>
+                            <li>Consulted with company on standards and future direction for front-end code</li>
                         </ul>
                     </div>
                     <div className="resume__job">
@@ -66,34 +66,34 @@ Resume.view = function (ctrl, options) {
                             <p className="resume__job__title--date">Current</p>
                         </div>
                         <ul className="resume__job__details">
-                            <li>Lead lectures on computer theory and proof writing, developed lesson plan</li>
-                            <li>Assisted students in debugging code and talking through the direction of web application projects</li>
+                            <li>Lead lectures on computational theory and proof writing, developed lesson plan</li>
+                            <li>Assisted students to construct a development plan of web application projects and performed code reviews</li>
                             <li>Graded computational proofs and web applications in various stages</li>
-                            <li>Helped to craft the courses to keep the students in mind</li>
+                            <li>Helped to develop curricula with a focus on student needs and preference</li>
                         </ul>
                     </div>
                     <div className="resume__job">
                         <div className="resume__job__title">
-                            <p><span>KidKaching</span>Front End Engineering Intern</p>
+                            <p><span>KidKaching</span>Front-End Engineering Intern</p>
                             <p className="resume__job__title--date">Summer 2016</p>
                         </div>
                         <ul className="resume__job__details">
-                            <li>Designed/Created a parallax homepage with a custom narrative to encourage young kids to learn about investing</li>
-                            <li>Attended and won the first round of the BNP Paribas International Hackathon, created a prototype using React</li>
+                            <li>Designed and built a parallax, narrative homepage catered to encouraging young kids to learn about investing</li>
+                            <li>Attended and won the first round of the BNP Paribas International Hackathon, with React Flux demo</li>
                             <li>Gained experience with and a passion for JS frameworks and SASS</li>
                             <li>Helped map out the functionality and UI of the alpha version of the KidKaching platform</li>
                         </ul>
                     </div>
                     <div className="resume__job">
                         <div className="resume__job__title">
-                            <p><span>TripleLift Solutions</span>Engineering Intern</p>
+                            <p><span>TripleLift</span>Solutions Engineering Intern</p>
                             <p className="resume__job__title--date">Summer 2015</p>
                         </div>
                         <ul className="resume__job__details">
                             <li>On a team of 6 engineers, worked to create interfaces to provide access to integral database information to non-engineering teams</li>
                             <li>Created internal tool to view customizable combinations of marketing metrics for use of Business Development and Sales teams</li>
                             <li>Constructed complex SQL queries to extract new data that had not been fully evaluated</li>
-                            <li>Developed internal application to analyze performance of specific advertisements when compared to a selection or type of publishers</li>
+                            <li>Developed internal application to analyze performance of specific advertisements, given a series of specifying queries</li>
                         </ul>
                     </div>
                 </div>
@@ -105,18 +105,18 @@ Resume.view = function (ctrl, options) {
                         
                     </div>
                     <ul className="resume__projects__details">
-                        <li>A node plugin that allows for full usage of ECMAScript 6 functionailty for full object oriented CSS</li>
-                        <li>Configuration, class based approach to creating JS application styles</li>
+                        <li>A node plugin that allows for full usage of ECMAScript 6 functionailty for object oriented CSS</li>
+                        <li>Configuration, class based approach to creating application styles</li>
                     </ul>
                     <div className="resume__projects__title">
                         <p><span>Congress Widget</span>Visualization App for Congressional Data</p>
                     </div>
                     <ul className="resume__projects__details">
                         <li>Using ProPublica's official Congress API created a tool for viewing congress data</li>
-                        <li>Created with React, Redux and SASS</li>
+                        <li>Created with React, Redux and SASS/Susy</li>
                     </ul>
                     <div className="resume__projects__title">
-                        <p><span>KidKaching Prototype</span>Winner of Round One of BNP International Hackathon 2016</p>
+                        <p><span>KidKaching Demo</span>Winner of Round One of BNP International Hackathon 2016</p>
                     </div>
                     <ul className="resume__projects__details">
                         <li>Early phase prototype for adolescent investment app</li>

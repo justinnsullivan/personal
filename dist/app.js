@@ -2848,7 +2848,7 @@ Resume.view = function (ctrl, options) {
                                 null,
                                 'Acenna Data'
                             ),
-                            'Front End Engineer Contractor'
+                            'Front-End Engineer Contractor'
                         ),
                         m(
                             'p',
@@ -2862,17 +2862,17 @@ Resume.view = function (ctrl, options) {
                         m(
                             'li',
                             null,
-                            'Reorganized CSS, converting thier previous system to SASS with a BEM and SMACSS methodology'
+                            'Reorganized CSS, converting vanilla CSS to SASS with a BEM and SMACSS methodology'
                         ),
                         m(
                             'li',
                             null,
-                            'Completed various front end projects with a combination of Angular and Django'
+                            'Completed various front-end projects with a combination of Angular and Django'
                         ),
                         m(
                             'li',
                             null,
-                            'Consulted with company on direction and standards for front end code going forward'
+                            'Consulted with company on standards and future direction for front-end code'
                         )
                     )
                 ),
@@ -2904,12 +2904,12 @@ Resume.view = function (ctrl, options) {
                         m(
                             'li',
                             null,
-                            'Lead lectures on computer theory and proof writing, developed lesson plan'
+                            'Lead lectures on computational theory and proof writing, developed lesson plan'
                         ),
                         m(
                             'li',
                             null,
-                            'Assisted students in debugging code and talking through the direction of web application projects'
+                            'Assisted students to construct a development plan of web application projects and performed code reviews'
                         ),
                         m(
                             'li',
@@ -2919,7 +2919,7 @@ Resume.view = function (ctrl, options) {
                         m(
                             'li',
                             null,
-                            'Helped to craft the courses to keep the students in mind'
+                            'Helped to develop curricula with a focus on student needs and preference'
                         )
                     )
                 ),
@@ -2937,7 +2937,7 @@ Resume.view = function (ctrl, options) {
                                 null,
                                 'KidKaching'
                             ),
-                            'Front End Engineering Intern'
+                            'Front-End Engineering Intern'
                         ),
                         m(
                             'p',
@@ -2951,12 +2951,12 @@ Resume.view = function (ctrl, options) {
                         m(
                             'li',
                             null,
-                            'Designed/Created a parallax homepage with a custom narrative to encourage young kids to learn about investing'
+                            'Designed and built a parallax, narrative homepage catered to encouraging young kids to learn about investing'
                         ),
                         m(
                             'li',
                             null,
-                            'Attended and won the first round of the BNP Paribas International Hackathon, created a prototype using React'
+                            'Attended and won the first round of the BNP Paribas International Hackathon, with React Flux demo'
                         ),
                         m(
                             'li',
@@ -2982,9 +2982,9 @@ Resume.view = function (ctrl, options) {
                             m(
                                 'span',
                                 null,
-                                'TripleLift Solutions'
+                                'TripleLift'
                             ),
-                            'Engineering Intern'
+                            'Solutions Engineering Intern'
                         ),
                         m(
                             'p',
@@ -3013,7 +3013,7 @@ Resume.view = function (ctrl, options) {
                         m(
                             'li',
                             null,
-                            'Developed internal application to analyze performance of specific advertisements when compared to a selection or type of publishers'
+                            'Developed internal application to analyze performance of specific advertisements, given a series of specifying queries'
                         )
                     )
                 )
@@ -3047,12 +3047,12 @@ Resume.view = function (ctrl, options) {
                     m(
                         'li',
                         null,
-                        'A node plugin that allows for full usage of ECMAScript 6 functionailty for full object oriented CSS'
+                        'A node plugin that allows for full usage of ECMAScript 6 functionailty for object oriented CSS'
                     ),
                     m(
                         'li',
                         null,
-                        'Configuration, class based approach to creating JS application styles'
+                        'Configuration, class based approach to creating application styles'
                     )
                 ),
                 m(
@@ -3080,7 +3080,7 @@ Resume.view = function (ctrl, options) {
                     m(
                         'li',
                         null,
-                        'Created with React, Redux and SASS'
+                        'Created with React, Redux and SASS/Susy'
                     )
                 ),
                 m(
@@ -3092,7 +3092,7 @@ Resume.view = function (ctrl, options) {
                         m(
                             'span',
                             null,
-                            'KidKaching Prototype'
+                            'KidKaching Demo'
                         ),
                         'Winner of Round One of BNP International Hackathon 2016'
                     )
