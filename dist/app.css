@@ -424,9 +424,10 @@ a {
   width: 60%; }
 
 .contact {
-  width: 100%;
+  width: 0%;
   position: fixed; }
   .contact.full {
+    width: 100%;
     z-index: 3000; }
   .contact__icon--email {
     content: url("img/mail.png"); }

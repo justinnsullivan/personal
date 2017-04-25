@@ -2568,11 +2568,12 @@ Projects.view = function (ctrl, options) {
     return m(
         'div',
         null,
+        m(Contact, null),
         m(Hamburger, null),
+        m(Menu, null),
         m(
             'div',
             { className: 'container' },
-            m(Menu, null),
             m(
                 'div',
                 { 'class': 'projects main' },
@@ -2731,157 +2732,62 @@ Resume.controller = function (options) {
 Resume.view = function (ctrl, options) {
     return m(
         'div',
-        { 'class': 'container' },
+        null,
         m(Contact, null),
         m(Hamburger, null),
         m(Menu, null),
         m(
             'div',
-            { className: 'resume main' },
-            m('div', { className: 'resume__img' }),
+            { 'class': 'container' },
             m(
                 'div',
-                { className: 'resume__header' },
+                { className: 'resume main' },
+                m('div', { className: 'resume__img' }),
                 m(
                     'div',
-                    { className: 'resume__header__name' },
-                    'Justin N. Sullivan'
-                ),
-                m(
-                    'div',
-                    { className: 'resume__header__contact' },
-                    m(
-                        'p',
-                        null,
-                        'justinnsullivan@gmail.com'
-                    ),
-                    m(
-                        'p',
-                        null,
-                        '908.812.1119'
-                    ),
-                    m(
-                        'p',
-                        null,
-                        'justinnsullivan.com'
-                    ),
-                    m(
-                        'p',
-                        null,
-                        'github.com/justinnsullivan'
-                    )
-                )
-            ),
-            m(
-                'div',
-                { className: 'resume__edu' },
-                m(
-                    'h1',
-                    null,
-                    'Education'
-                ),
-                m('span', { className: 'resume__line' }),
-                m(
-                    'div',
-                    { className: 'resume__edu__title' },
-                    m(
-                        'p',
-                        null,
-                        m(
-                            'span',
-                            null,
-                            'Tufts University'
-                        ),
-                        'BS in Computer Science - Minor In English'
-                    ),
-                    m(
-                        'p',
-                        { className: 'resume__edu__title--date' },
-                        'Expected May 2017'
-                    )
-                ),
-                m(
-                    'div',
-                    { className: 'resume__edu__details' },
-                    m(
-                        'p',
-                        null,
-                        m(
-                            'span',
-                            null,
-                            'Course:'
-                        ),
-                        'Computational Theory - Web Engineering - Algorithms - Security - Machine Structure'
-                    ),
-                    m(
-                        'p',
-                        null,
-                        m(
-                            'span',
-                            null,
-                            'Interests:'
-                        ),
-                        'Tufts Wilderness Orientation - Tufts University Beelzebubs - Spirit Of Color Dance Crew - Tufts Bikes'
-                    )
-                )
-            ),
-            m(
-                'div',
-                { className: 'resume__exp' },
-                m(
-                    'h1',
-                    null,
-                    'Professional Experience'
-                ),
-                m('span', { className: 'resume__line' }),
-                m(
-                    'div',
-                    { className: 'resume__job' },
+                    { className: 'resume__header' },
                     m(
                         'div',
-                        { className: 'resume__job__title' },
-                        m(
-                            'p',
-                            null,
-                            m(
-                                'span',
-                                null,
-                                'Acenna Data'
-                            ),
-                            'Front-End Engineer Contractor'
-                        ),
-                        m(
-                            'p',
-                            { className: 'resume__job__title--date' },
-                            'Current'
-                        )
+                        { className: 'resume__header__name' },
+                        'Justin N. Sullivan'
                     ),
                     m(
-                        'ul',
-                        { className: 'resume__job__details' },
+                        'div',
+                        { className: 'resume__header__contact' },
                         m(
-                            'li',
+                            'p',
                             null,
-                            'Reorganized CSS, converting vanilla CSS to SASS with a BEM and SMACSS methodology'
+                            'justinnsullivan@gmail.com'
                         ),
                         m(
-                            'li',
+                            'p',
                             null,
-                            'Completed various front-end projects with a combination of Angular and Django'
+                            '908.812.1119'
                         ),
                         m(
-                            'li',
+                            'p',
                             null,
-                            'Consulted with company on standards and future direction for front-end code'
+                            'justinnsullivan.com'
+                        ),
+                        m(
+                            'p',
+                            null,
+                            'github.com/justinnsullivan'
                         )
                     )
                 ),
                 m(
                     'div',
-                    { className: 'resume__job' },
+                    { className: 'resume__edu' },
+                    m(
+                        'h1',
+                        null,
+                        'Education'
+                    ),
+                    m('span', { className: 'resume__line' }),
                     m(
                         'div',
-                        { className: 'resume__job__title' },
+                        { className: 'resume__edu__title' },
                         m(
                             'p',
                             null,
@@ -2890,266 +2796,365 @@ Resume.view = function (ctrl, options) {
                                 null,
                                 'Tufts University'
                             ),
-                            'TA for Web Engineering and Computational Theory'
+                            'BS in Computer Science - Minor In English'
                         ),
                         m(
                             'p',
-                            { className: 'resume__job__title--date' },
-                            'Current'
+                            { className: 'resume__edu__title--date' },
+                            'Expected May 2017'
                         )
                     ),
                     m(
-                        'ul',
-                        { className: 'resume__job__details' },
-                        m(
-                            'li',
-                            null,
-                            'Lead lectures on computational theory and proof writing, developed lesson plan'
-                        ),
-                        m(
-                            'li',
-                            null,
-                            'Assisted students to construct a development plan of web application projects and performed code reviews'
-                        ),
-                        m(
-                            'li',
-                            null,
-                            'Graded computational proofs and web applications in various stages'
-                        ),
-                        m(
-                            'li',
-                            null,
-                            'Helped to develop curricula with a focus on student needs and preference'
-                        )
-                    )
-                ),
-                m(
-                    'div',
-                    { className: 'resume__job' },
-                    m(
                         'div',
-                        { className: 'resume__job__title' },
+                        { className: 'resume__edu__details' },
                         m(
                             'p',
                             null,
                             m(
                                 'span',
                                 null,
-                                'KidKaching'
+                                'Course:'
                             ),
-                            'Front-End Engineering Intern'
+                            'Computational Theory - Web Engineering - Algorithms - Security - Machine Structure'
                         ),
-                        m(
-                            'p',
-                            { className: 'resume__job__title--date' },
-                            'Summer 2016'
-                        )
-                    ),
-                    m(
-                        'ul',
-                        { className: 'resume__job__details' },
-                        m(
-                            'li',
-                            null,
-                            'Designed and built a parallax, narrative homepage catered to encouraging young kids to learn about investing'
-                        ),
-                        m(
-                            'li',
-                            null,
-                            'Attended and won the first round of the BNP Paribas International Hackathon, with React Flux demo'
-                        ),
-                        m(
-                            'li',
-                            null,
-                            'Gained experience with and a passion for JS frameworks and SASS'
-                        ),
-                        m(
-                            'li',
-                            null,
-                            'Helped map out the functionality and UI of the alpha version of the KidKaching platform'
-                        )
-                    )
-                ),
-                m(
-                    'div',
-                    { className: 'resume__job' },
-                    m(
-                        'div',
-                        { className: 'resume__job__title' },
                         m(
                             'p',
                             null,
                             m(
                                 'span',
                                 null,
-                                'TripleLift'
+                                'Interests:'
                             ),
-                            'Solutions Engineering Intern'
+                            'Tufts Wilderness Orientation - Tufts University Beelzebubs - Spirit Of Color Dance Crew - Tufts Bikes'
+                        )
+                    )
+                ),
+                m(
+                    'div',
+                    { className: 'resume__exp' },
+                    m(
+                        'h1',
+                        null,
+                        'Professional Experience'
+                    ),
+                    m('span', { className: 'resume__line' }),
+                    m(
+                        'div',
+                        { className: 'resume__job' },
+                        m(
+                            'div',
+                            { className: 'resume__job__title' },
+                            m(
+                                'p',
+                                null,
+                                m(
+                                    'span',
+                                    null,
+                                    'Acenna Data'
+                                ),
+                                'Front End Engineer Contractor'
+                            ),
+                            m(
+                                'p',
+                                { className: 'resume__job__title--date' },
+                                'Current'
+                            )
                         ),
                         m(
+                            'ul',
+                            { className: 'resume__job__details' },
+                            m(
+                                'li',
+                                null,
+                                'Implemented SASS with Bem Methodologies to refactor and streamline their vanilla CSS'
+                            ),
+                            m(
+                                'li',
+                                null,
+                                'Built a client list retrieval tool for medical marketers using Angular and Django'
+                            ),
+                            m(
+                                'li',
+                                null,
+                                'Established new standards and methods to construct cleaner and more efficient components'
+                            )
+                        )
+                    ),
+                    m(
+                        'div',
+                        { className: 'resume__job' },
+                        m(
+                            'div',
+                            { className: 'resume__job__title' },
+                            m(
+                                'p',
+                                null,
+                                m(
+                                    'span',
+                                    null,
+                                    'Tufts University'
+                                ),
+                                'TA for Web Engineering and Computational Theory'
+                            ),
+                            m(
+                                'p',
+                                { className: 'resume__job__title--date' },
+                                'Current'
+                            )
+                        ),
+                        m(
+                            'ul',
+                            { className: 'resume__job__details' },
+                            m(
+                                'li',
+                                null,
+                                'Lead lectures on computational theory and proof writing, developed lesson plan'
+                            ),
+                            m(
+                                'li',
+                                null,
+                                'Assisted students to construct a development plan of web application projects and performed code reviews'
+                            ),
+                            m(
+                                'li',
+                                null,
+                                'Graded computational proofs and web applications in various stages'
+                            ),
+                            m(
+                                'li',
+                                null,
+                                'Helped to develop curricula with a focus on student needs and preference'
+                            )
+                        )
+                    ),
+                    m(
+                        'div',
+                        { className: 'resume__job' },
+                        m(
+                            'div',
+                            { className: 'resume__job__title' },
+                            m(
+                                'p',
+                                null,
+                                m(
+                                    'span',
+                                    null,
+                                    'KidKaching'
+                                ),
+                                'Front End Engineering Intern'
+                            ),
+                            m(
+                                'p',
+                                { className: 'resume__job__title--date' },
+                                'Summer 2016'
+                            )
+                        ),
+                        m(
+                            'ul',
+                            { className: 'resume__job__details' },
+                            m(
+                                'li',
+                                null,
+                                'Designed and built a parallax, narrative homepage catered to encouraging young kids to learn about investing'
+                            ),
+                            m(
+                                'li',
+                                null,
+                                'Attended and won the first round of the BNP Paribas International Hackathon, with React Flux demo'
+                            ),
+                            m(
+                                'li',
+                                null,
+                                'Gained experience with and a passion for JS frameworks and SASS'
+                            ),
+                            m(
+                                'li',
+                                null,
+                                'Mapped out the functionality and UI of the alpha version of the KidKaching platform'
+                            )
+                        )
+                    ),
+                    m(
+                        'div',
+                        { className: 'resume__job' },
+                        m(
+                            'div',
+                            { className: 'resume__job__title' },
+                            m(
+                                'p',
+                                null,
+                                m(
+                                    'span',
+                                    null,
+                                    'TripleLift'
+                                ),
+                                'Solutions Engineering Intern'
+                            ),
+                            m(
+                                'p',
+                                { className: 'resume__job__title--date' },
+                                'Summer 2015'
+                            )
+                        ),
+                        m(
+                            'ul',
+                            { className: 'resume__job__details' },
+                            m(
+                                'li',
+                                null,
+                                'On a team of 6 engineers, worked to create interfaces to provide access to integral database information to non-engineering teams'
+                            ),
+                            m(
+                                'li',
+                                null,
+                                'Created internal tool to view customizable combinations of marketing metrics for use of Business Development and Sales teams'
+                            ),
+                            m(
+                                'li',
+                                null,
+                                'Constructed complex SQL queries to extract new data that had not been fully evaluated'
+                            ),
+                            m(
+                                'li',
+                                null,
+                                'Developed internal application to analyze performance of specific advertisements, given a series of specifying queries'
+                            )
+                        )
+                    )
+                ),
+                m(
+                    'div',
+                    { className: 'resume__projects' },
+                    m(
+                        'h1',
+                        null,
+                        'Projects'
+                    ),
+                    m('span', { className: 'resume__line' }),
+                    m(
+                        'div',
+                        { className: 'resume__projects__title' },
+                        m(
                             'p',
-                            { className: 'resume__job__title--date' },
-                            'Summer 2015'
+                            null,
+                            m(
+                                'span',
+                                null,
+                                'ESCSS'
+                            ),
+                            'Node ES6 CSS Preprocessor'
                         )
                     ),
                     m(
                         'ul',
-                        { className: 'resume__job__details' },
+                        { className: 'resume__projects__details' },
                         m(
                             'li',
                             null,
-                            'On a team of 6 engineers, worked to create interfaces to provide access to integral database information to non-engineering teams'
+                            'A node plugin that allows for full usage of ECMAScript 6 functionailty for object oriented CSS'
                         ),
                         m(
                             'li',
                             null,
-                            'Created internal tool to view customizable combinations of marketing metrics for use of Business Development and Sales teams'
+                            'Configuration, class based approach to creating application styles'
+                        )
+                    ),
+                    m(
+                        'div',
+                        { className: 'resume__projects__title' },
+                        m(
+                            'p',
+                            null,
+                            m(
+                                'span',
+                                null,
+                                'Congress Widget'
+                            ),
+                            'Visualization App for Congressional Data'
+                        )
+                    ),
+                    m(
+                        'ul',
+                        { className: 'resume__projects__details' },
+                        m(
+                            'li',
+                            null,
+                            'Using ProPublica\'s official Congress API created a tool for viewing congress data'
                         ),
                         m(
                             'li',
                             null,
-                            'Constructed complex SQL queries to extract new data that had not been fully evaluated'
+                            'Created with React, Redux and SASS/Susy'
+                        )
+                    ),
+                    m(
+                        'div',
+                        { className: 'resume__projects__title' },
+                        m(
+                            'p',
+                            null,
+                            m(
+                                'span',
+                                null,
+                                'KidKaching Demo'
+                            ),
+                            'Winner of Round One of BNP International Hackathon 2016'
+                        )
+                    ),
+                    m(
+                        'ul',
+                        { className: 'resume__projects__details' },
+                        m(
+                            'li',
+                            null,
+                            'Early phase prototype for adolescent investment app'
                         ),
                         m(
                             'li',
                             null,
-                            'Developed internal application to analyze performance of specific advertisements, given a series of specifying queries'
+                            'Built using SASS, React Flux'
                         )
                     )
-                )
-            ),
-            m(
-                'div',
-                { className: 'resume__projects' },
-                m(
-                    'h1',
-                    null,
-                    'Projects'
                 ),
-                m('span', { className: 'resume__line' }),
                 m(
                     'div',
-                    { className: 'resume__projects__title' },
+                    { className: 'resume__stack' },
+                    m(
+                        'h1',
+                        null,
+                        'Stack'
+                    ),
+                    m('span', { className: 'resume__line' }),
                     m(
                         'p',
                         null,
                         m(
                             'span',
                             null,
-                            'ESCSS'
+                            'Languages:'
                         ),
-                        'Node ES6 CSS Preprocessor'
-                    )
-                ),
-                m(
-                    'ul',
-                    { className: 'resume__projects__details' },
-                    m(
-                        'li',
-                        null,
-                        'A node plugin that allows for full usage of ECMAScript 6 functionailty for object oriented CSS'
+                        'Javascript, React, Redux, JSX, ES6, Angular.js, CSS, SASS, HTML5, MySQL, Python, jQuery, Git, MongoDB, PHP, PostgreSQL'
                     ),
-                    m(
-                        'li',
-                        null,
-                        'Configuration, class based approach to creating application styles'
-                    )
-                ),
-                m(
-                    'div',
-                    { className: 'resume__projects__title' },
                     m(
                         'p',
                         null,
                         m(
                             'span',
                             null,
-                            'Congress Widget'
+                            'Media:'
                         ),
-                        'Visualization App for Congressional Data'
-                    )
-                ),
-                m(
-                    'ul',
-                    { className: 'resume__projects__details' },
-                    m(
-                        'li',
-                        null,
-                        'Using ProPublica\'s official Congress API created a tool for viewing congress data'
+                        'Sketch, Adobe Photoshop, Final Cut, Microsoft Suite'
                     ),
-                    m(
-                        'li',
-                        null,
-                        'Created with React, Redux and SASS/Susy'
-                    )
-                ),
-                m(
-                    'div',
-                    { className: 'resume__projects__title' },
                     m(
                         'p',
                         null,
                         m(
                             'span',
                             null,
-                            'KidKaching Demo'
+                            'Spanish:'
                         ),
-                        'Winner of Round One of BNP International Hackathon 2016'
+                        'Full Professional Profciency'
                     )
-                ),
-                m(
-                    'ul',
-                    { className: 'resume__projects__details' },
-                    m(
-                        'li',
-                        null,
-                        'Early phase prototype for adolescent investment app'
-                    ),
-                    m(
-                        'li',
-                        null,
-                        'Built using SASS, React Flux'
-                    )
-                )
-            ),
-            m(
-                'div',
-                { className: 'resume__stack' },
-                m(
-                    'h1',
-                    null,
-                    'Stack'
-                ),
-                m('span', { className: 'resume__line' }),
-                m(
-                    'p',
-                    null,
-                    m(
-                        'span',
-                        null,
-                        'Languages:'
-                    ),
-                    'Javascript, React, Redux, JSX, ES6, Angular.js, CSS, SASS, HTML5, MySQL, Python, jQuery, Git, MongoDB, PHP, PostgreSQL'
-                ),
-                m(
-                    'p',
-                    null,
-                    m(
-                        'span',
-                        null,
-                        'Media:'
-                    ),
-                    'Sketch, Adobe Photoshop, Final Cut, Microsoft Suite'
-                ),
-                m(
-                    'p',
-                    null,
-                    m(
-                        'span',
-                        null,
-                        'Spanish:'
-                    ),
-                    'Full Professional Profciency'
                 )
             )
         )

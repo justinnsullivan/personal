@@ -26,10 +26,10 @@ Projects.controller = function (options) {
 Projects.view = function (ctrl, options) {
     return (
         <div>
+            <Contact/>
             <Hamburger/>
-            
+            <Menu/>
             <div className="container">
-                <Menu/>
                 <div class="projects main">
                     <div class="projects__title">
                         PROJECTS
