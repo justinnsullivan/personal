@@ -2866,7 +2866,7 @@ Resume.view = function (ctrl, options) {
                             m(
                                 'li',
                                 null,
-                                'Implemented SASS with Bem Methodologies to refactor and streamline their vanilla CSS'
+                                'Implemented SASS with BEM Methodologies to refactor and streamline their vanilla CSS'
                             ),
                             m(
                                 'li',
@@ -2955,7 +2955,7 @@ Resume.view = function (ctrl, options) {
                             m(
                                 'li',
                                 null,
-                                'Designed and built a parallax, narrative homepage catered to encouraging young kids to learn about investing'
+                                'Designed and implemented a parallax, narrative homepage catered to encouraging young kids to learn about investing'
                             ),
                             m(
                                 'li',
@@ -3002,7 +3002,7 @@ Resume.view = function (ctrl, options) {
                             m(
                                 'li',
                                 null,
-                                'On a team of 6 engineers, worked to create interfaces to provide access to integral database information to non-engineering teams'
+                                'On a team of 6 engineers, built interfaces to provide access to integral database information to non-engineering teams'
                             ),
                             m(
                                 'li',
@@ -3017,7 +3017,7 @@ Resume.view = function (ctrl, options) {
                             m(
                                 'li',
                                 null,
-                                'Developed internal application to analyze performance of specific advertisements, given a series of specifying queries'
+                                'Developed internal application to analyze performance of specific advertisements, given a series of queries'
                             )
                         )
                     )

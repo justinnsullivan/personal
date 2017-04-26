@@ -56,7 +56,7 @@ Resume.view = function (ctrl, options) {
                                 <p className="resume__job__title--date">Current</p>
                             </div>
                             <ul className="resume__job__details">
-                                <li>Implemented SASS with Bem Methodologies to refactor and streamline their vanilla CSS</li>
+                                <li>Implemented SASS with BEM Methodologies to refactor and streamline their vanilla CSS</li>
                                 <li>Built a client list retrieval tool for medical marketers using Angular and Django</li>
                                 <li>Established new standards and methods to construct cleaner and more efficient components</li>
                             </ul>
@@ -79,7 +79,7 @@ Resume.view = function (ctrl, options) {
                                 <p className="resume__job__title--date">Summer 2016</p>
                             </div>
                             <ul className="resume__job__details">
-                                <li>Designed and built a parallax, narrative homepage catered to encouraging young kids to learn about investing</li>
+                                <li>Designed and implemented a parallax, narrative homepage catered to encouraging young kids to learn about investing</li>
                                 <li>Attended and won the first round of the BNP Paribas International Hackathon, with React Flux demo</li>
                                 <li>Gained experience with and a passion for JS frameworks and SASS</li>
                                 <li>Mapped out the functionality and UI of the alpha version of the KidKaching platform</li>
@@ -91,10 +91,10 @@ Resume.view = function (ctrl, options) {
                                 <p className="resume__job__title--date">Summer 2015</p>
                             </div>
                             <ul className="resume__job__details">
-                                <li>On a team of 6 engineers, worked to create interfaces to provide access to integral database information to non-engineering teams</li>
+                                <li>On a team of 6 engineers, built interfaces to provide access to integral database information to non-engineering teams</li>
                                 <li>Created internal tool to view customizable combinations of marketing metrics for use of Business Development and Sales teams</li>
                                 <li>Constructed complex SQL queries to extract new data that had not been fully evaluated</li>
-                                <li>Developed internal application to analyze performance of specific advertisements, given a series of specifying queries</li>
+                                <li>Developed internal application to analyze performance of specific advertisements, given a series of queries</li>
                             </ul>
                         </div>
                     </div>
