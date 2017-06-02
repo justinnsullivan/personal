@@ -2603,7 +2603,7 @@ Projects.view = function (ctrl, options) {
                 ),
                 m(
                     'div',
-                    { 'class': 'projects__card', onclick: Projects.vm.newTab.bind(this, 'https://jumbosmash-b5e5e.firebaseapp.com/') },
+                    { 'class': 'projects__card', onclick: Projects.vm.newTab.bind(this, 'http://jumbosmash.com/') },
                     m(
                         'div',
                         { 'class': 'projects__card__title' },

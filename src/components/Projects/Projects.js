@@ -43,7 +43,7 @@ Projects.view = function (ctrl, options) {
                         </div>
                         <img class="projects__card__img" src="https://i.imgur.com/kpqO0du.png"/>
                     </div>
-                    <div class="projects__card" onclick={Projects.vm.newTab.bind(this, 'https://jumbosmash-b5e5e.firebaseapp.com/')}>
+                    <div class="projects__card" onclick={Projects.vm.newTab.bind(this, 'http://jumbosmash.com/')}>
                         <div class="projects__card__title">
                             <p>JumboSmash</p>
                             <span>Parllax Landing Page for Tufs Dating App</span>
