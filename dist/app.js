@@ -1,41 +1,41 @@
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
 /******/ 			exports: {}
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// identity function for calling harmony imports with the correct context
 /******/ 	__webpack_require__.i = function(value) { return value; };
-
+/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -46,7 +46,7 @@
 /******/ 			});
 /******/ 		}
 /******/ 	};
-
+/******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -55,25 +55,36 @@
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
 /******/ 	};
-
+/******/
 /******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 21);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_RESULT__;;(function (global, factory) { // eslint-disable-line
+/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_RESULT__;/* global Promise */
+
+;(function (global, factory) { // eslint-disable-line
 	"use strict"
 	/* eslint-disable no-undef */
 	var m = factory(global)
+	/*	Set dependencies when no window for isomorphic compatibility */
+	if(typeof window === "undefined") {
+		m.deps({
+			document: typeof document !== "undefined" ? document : {},
+			location: typeof location !== "undefined" ? location : {},
+			clearTimeout: clearTimeout,
+			setTimeout: setTimeout
+		})
+	}
 	if (typeof module === "object" && module != null && module.exports) {
 		module.exports = m
 	} else if (true) {
@@ -83,11 +94,11 @@
 		global.m = m
 	}
 	/* eslint-enable no-undef */
-})(typeof window !== "undefined" ? window : this, function (global, undefined) { // eslint-disable-line
+})(typeof window !== "undefined" ? window : this, function factory(global, undefined) { // eslint-disable-line
 	"use strict"
 
 	m.version = function () {
-		return "v0.2.5"
+		return "v0.2.8"
 	}
 
 	var hasOwn = {}.hasOwnProperty
@@ -147,6 +158,8 @@
 		return global
 	}
 
+	m.deps.factory = m.factory = factory
+
 	m.deps(global)
 
 	/**
@@ -157,7 +170,9 @@
 
 	function parseTagAttrs(cell, tag) {
 		var classes = []
-		var parser = /(?:(^|#|\.)([^#\.\[\]]+))|(\[.+?\])/g
+		/* eslint-disable max-len */
+		var parser = /(?:(^|#|\.)([^#\.\[\]]+))|(\[(.+?)(?:\s*=\s*("|'|)((?:\\["'\]]|.)*?)\5)?\])/g
+		/* eslint-enable max-len */
 		var match
 
 		while ((match = parser.exec(tag))) {
@@ -167,9 +182,11 @@
 				cell.attrs.id = match[2]
 			} else if (match[1] === ".") {
 				classes.push(match[2])
-			} else if (match[3][0] === "[") {
-				var pair = /\[(.+?)(?:=("|'|)(.*?)\2)?\]/.exec(match[3])
-				cell.attrs[pair[1]] = pair[3] || ""
+			} else if (match[3].charAt(0) === "[") { // #1195
+				var attrValue = match[6]
+				if (attrValue) attrValue = attrValue.replace(/\\(["'])/g, "$1")
+				if (match[4] === "class") classes.push(attrValue)
+				else cell.attrs[match[4]] = attrValue || true
 			}
 		}
 
@@ -220,7 +237,7 @@
 			args[i - 1] = arguments[i]
 		}
 
-		if (isObject(tag)) return parameterize(tag, args)
+		if (tag && isFunction(tag.view)) return parameterize(tag, args)
 
 		if (!isString(tag)) {
 			throw new Error("selector in m(selector, attrs, children) should " +
@@ -260,7 +277,9 @@
 		// value of Console.log in some versions of Firefox (behavior depends on
 		// version)
 		try {
-			if (data != null && data.toString() != null) return data
+			if (typeof data !== "boolean" &&
+					data != null &&
+					data.toString() != null) return data
 		} catch (e) {
 			// silently ignore errors
 		}
@@ -483,7 +502,7 @@
 
 				if (pendingRequests && controller.onunload) {
 					var onunload = controller.onunload
-					controller.onunload = noop
+					controller.onunload = function (){}
 					controller.onunload.$old = onunload
 				}
 			})
@@ -578,7 +597,8 @@
 		parentTag
 	) {
 		var nodes = cached.nodes
-		if (!editable || editable !== $document.activeElement) {
+		if (!editable || editable !== $document.activeElement ||
+				data !== cached) {
 			if (data.$trusted) {
 				clear(nodes, cached)
 				nodes = injectHTML(parentElement, index, data)
@@ -588,6 +608,7 @@
 			} else if (editable) {
 				// contenteditable nodes use `innerHTML` instead of `nodeValue`.
 				editable.innerHTML = data
+				nodes = [].slice.call(editable.childNodes)
 			} else {
 				// was a trusted string
 				if (nodes[0].nodeType === 1 || nodes.length > 1 ||
@@ -602,6 +623,7 @@
 		}
 		cached = new data.constructor(data)
 		cached.nodes = nodes
+		cached.$trusted = data.$trusted
 		return cached
 	}
 
@@ -628,10 +650,7 @@
 		if (item.$trusted) {
 			// fix offset of next element if item was a trusted string w/ more
 			// than one html element
-			// the first clause in the regexp matches elements
-			// the second clause (after the pipe) matches text nodes
-			var match = item.match(/<[^\/]|\>\s*[^<]/g)
-			if (match != null) return match.length
+			return item.nodes.length
 		} else if (isArray(item)) {
 			return item.length
 		}
@@ -799,13 +818,6 @@
 			cached.children.nodes = []
 		}
 
-		// edge case: setting value on <select> doesn't work before children
-		// exist, so set it again after children have been created
-		if (data.tag === "select" && "value" in data.attrs) {
-			setAttributes(node, data.tag, {value: data.attrs.value}, {},
-				namespace)
-		}
-
 		return cached
 	}
 
@@ -960,6 +972,13 @@
 				controllers)
 		}
 
+		// edge case: setting value on <select> doesn't work before children
+		// exist, so set it again after children have been created/updated
+		if (data.tag === "select" && "value" in data.attrs) {
+			setAttributes(node, data.tag, {value: data.attrs.value}, {},
+				namespace)
+		}
+
 		if (!isNew && shouldReattach === true && node != null) {
 			insertNode(parentElement, node, index)
 		}
@@ -1079,6 +1098,10 @@
 	}
 
 	function copyStyleAttrs(node, dataAttr, cachedAttr) {
+		if (cachedAttr === dataAttr) {
+			node.style = ""
+			cachedAttr = {}
+		}
 		for (var rule in dataAttr) {
 			if (hasOwn.call(dataAttr, rule)) {
 				if (cachedAttr == null || cachedAttr[rule] !== dataAttr[rule]) {
@@ -1143,15 +1166,26 @@
 			//
 			// #348 don't set the value if not needed - otherwise, cursor
 			// placement breaks in Chrome
+			// #1252 likewise when `contenteditable` is set on an element.
 			try {
-				if (tag !== "input" || node[attrName] !== dataAttr) {
+				if (
+					tag !== "input" && !node.isContentEditable ||
+					node[attrName] != dataAttr // eslint-disable-line eqeqeq
+				) {
 					node[attrName] = dataAttr
 				}
 			} catch (e) {
 				node.setAttribute(attrName, dataAttr)
 			}
+		} else {
+			try {
+				node.setAttribute(attrName, dataAttr)
+			} catch (e) {
+				// IE8 doesn't allow change input attributes and throws
+				// an exception. Unfortunately it cannot be handled, because
+				// error code is not informative.
+			}
 		}
-		else node.setAttribute(attrName, dataAttr)
 	}
 
 	function trySetAttr(
@@ -1163,7 +1197,10 @@
 		tag,
 		namespace
 	) {
-		if (!(attrName in cachedAttrs) || (cachedAttr !== dataAttr) || ($document.activeElement === node)) {
+		if (!(attrName in cachedAttrs) ||
+				(cachedAttr !== dataAttr) ||
+				typeof dataAttr === "object" ||
+				($document.activeElement === node)) {
 			cachedAttrs[attrName] = dataAttr
 			try {
 				return setSingleAttr(
@@ -1179,8 +1216,11 @@
 				if (e.message.indexOf("Invalid argument") < 0) throw e
 			}
 		} else if (attrName === "value" && tag === "input" &&
-				node.value !== dataAttr) {
-			// #348 dataAttr may not be a string, so use loose comparison
+								/* eslint-disable eqeqeq */
+								node.value != dataAttr) {
+								// #348 dataAttr may not be a string,
+								// so use loose comparison
+								/* eslint-enable eqeqeq */
 			node.value = dataAttr
 		}
 	}
@@ -1404,6 +1444,7 @@
 		}
 
 		prop.toJSON = function () {
+			if (store && isFunction(store.toJSON)) return store.toJSON()
 			return store
 		}
 
@@ -1411,7 +1452,9 @@
 	}
 
 	m.prop = function (store) {
-		if ((store != null && (isObject(store) || isFunction(store)) || ((typeof Promise !== "undefined") && (store instanceof Promise))) &&
+		if ((store != null && (isObject(store) || isFunction(store)) ||
+					((typeof Promise !== "undefined") &&
+						(store instanceof Promise))) &&
 				isFunction(store.then)) {
 			return propify(store)
 		}
@@ -1465,6 +1508,8 @@
 		return parameterize(component, args)
 	}
 
+	var currentRoute, previousRoute
+
 	function checkPrevented(component, root, index, isPrevented) {
 		if (!isPrevented) {
 			m.redraw.strategy("all")
@@ -1493,15 +1538,21 @@
 				removeRootElement(root, index)
 			}
 			return controllers[index]
-		} else if (component == null) {
-			removeRootElement(root, index)
+		} else {
+			if (component == null) {
+				removeRootElement(root, index)
+			}
+
+			if (previousRoute) {
+				currentRoute = previousRoute
+			}
 		}
 	}
 
 	m.mount = m.module = function (root, component) {
 		if (!root) {
-			throw new Error("Please ensure the DOM element exists before " +
-				"rendering a template into it.")
+			throw new Error("Ensure the DOM element being passed to " +
+				"m.route/m.mount/m.render is not undefined.")
 		}
 
 		var index = roots.indexOf(root)
@@ -1541,6 +1592,7 @@
 		components.splice(index, 1)
 		reset(root)
 		nodeCache.splice(getCellCacheKey(root), 1)
+		unloaders = []
 	}
 
 	var redrawing = false
@@ -1627,7 +1679,7 @@
 	var modes = {pathname: "", hash: "#", search: "?"}
 	var redirect = noop
 	var isDefaultRoute = false
-	var routeParams, currentRoute
+	var routeParams
 
 	m.route = function (root, arg1, arg2, vdom) { // eslint-disable-line
 		// m.route()
@@ -1680,7 +1732,7 @@
 		}
 		// m.route(route, params, shouldReplaceHistoryEntry)
 		if (isString(root)) {
-			var oldRoute = currentRoute
+			previousRoute = currentRoute
 			currentRoute = root
 
 			var args = arg1 || {}
@@ -1716,7 +1768,7 @@
 
 			var replaceHistory =
 				(arguments.length === 3 ? arg2 : arg1) === true ||
-				oldRoute === root
+				previousRoute === currentRoute
 
 			if (global.history.pushState) {
 				var method = replaceHistory ? "replaceState" : "pushState"
@@ -1738,6 +1790,8 @@
 				$location[m.route.mode] = currentRoute
 				redirect(modes[m.route.mode] + currentRoute)
 			}
+
+			previousRoute = null
 		}
 	}
 
@@ -1896,8 +1950,7 @@
 			if (params[key] != null) {
 				if (!isArray(params[key])) params[key] = [params[key]]
 				params[key].push(value)
-			}
-			else params[key] = value
+			} else params[key] = value
 		})
 
 		return params
@@ -1925,7 +1978,7 @@
 			return propify(promise.then(resolve, reject), initialValue)
 		}
 
-		prop.catch = prop.then.bind(null, null)
+		prop["catch"] = prop.then.bind(null, null)
 		return prop
 	}
 	// Promiz.mithril.js | Zolmeister | MIT
@@ -2188,6 +2241,14 @@
 			xhr.setRequestHeader("Accept", "application/json, text/*")
 		}
 
+		if (isObject(options.headers)) {
+			for (var header in options.headers) {
+				if (hasOwn.call(options.headers, header)) {
+					xhr.setRequestHeader(header, options.headers[header])
+				}
+			}
+		}
+
 		if (isFunction(options.config)) {
 			var maybeXhr = options.config(xhr, options)
 			if (maybeXhr != null) xhr = maybeXhr
@@ -2305,7 +2366,7 @@
 	return m
 }); // eslint-disable-line
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)(module)))
 
 /***/ }),
 /* 1 */
@@ -2315,7 +2376,7 @@
 
 
 var m = __webpack_require__(0);
-var Clipboard = __webpack_require__(12);
+var Clipboard = __webpack_require__(13);
 
 var Contact = {};
 
@@ -2511,7 +2572,7 @@ module.exports = Menu;
 
 var m = __webpack_require__(0);
 var Hamburger = __webpack_require__(2);
-var Chat = __webpack_require__(7);
+var Chat = __webpack_require__(8);
 var Menu = __webpack_require__(3);
 var Contact = __webpack_require__(1);
 
@@ -2801,7 +2862,7 @@ Resume.view = function (ctrl, options) {
                         m(
                             'p',
                             { className: 'resume__edu__title--date' },
-                            'Expected May 2017'
+                            'May 2017'
                         )
                     ),
                     m(
@@ -2850,6 +2911,63 @@ Resume.view = function (ctrl, options) {
                                 m(
                                     'span',
                                     null,
+                                    'DataDog'
+                                ),
+                                'Software Engineer'
+                            ),
+                            m(
+                                'p',
+                                { className: 'resume__job__title--date' },
+                                'August 2017 - Present'
+                            )
+                        ),
+                        m(
+                            'ul',
+                            { className: 'resume__job__details' },
+                            m(
+                                'li',
+                                null,
+                                'As a member of the Alerts team, built the front end of Datadog\'s new monitor status page, using a modern tech stack and data visualization'
+                            ),
+                            m(
+                                'li',
+                                null,
+                                'Rewrote a large portion of the Alerting product\'s front end testing suite using Puppeteer and Jest'
+                            ),
+                            m(
+                                'li',
+                                null,
+                                'Worked closely with designers, project managers, and clients to deliver solidly-coded, performant projects on-time and on-budget'
+                            ),
+                            m(
+                                'li',
+                                null,
+                                'As a member of the Developer Efficeny team, maintained and improved developer tooling for the Go and Python code bases'
+                            ),
+                            m(
+                                'li',
+                                null,
+                                'Improved the continous integration pipelines, through day to day triage and long term planning and engineering solutions'
+                            ),
+                            m(
+                                'li',
+                                null,
+                                'Helped form a developer experience tailored specifically to Datadog engineers through surveys and on call shifts'
+                            )
+                        )
+                    ),
+                    m(
+                        'div',
+                        { className: 'resume__job' },
+                        m(
+                            'div',
+                            { className: 'resume__job__title' },
+                            m(
+                                'p',
+                                null,
+                                m(
+                                    'span',
+                                    null,
                                     'Acenna Data'
                                 ),
                                 'Front End Engineer Contractor'
@@ -2857,7 +2975,7 @@ Resume.view = function (ctrl, options) {
                             m(
                                 'p',
                                 { className: 'resume__job__title--date' },
-                                'Current'
+                                'Winter 2016'
                             )
                         ),
                         m(
@@ -2899,7 +3017,7 @@ Resume.view = function (ctrl, options) {
                             m(
                                 'p',
                                 { className: 'resume__job__title--date' },
-                                'Current'
+                                '2016 - 2017'
                             )
                         ),
                         m(
@@ -2965,11 +3083,6 @@ Resume.view = function (ctrl, options) {
                             m(
                                 'li',
                                 null,
-                                'Gained experience with and a passion for JS frameworks and SASS'
-                            ),
-                            m(
-                                'li',
-                                null,
                                 'Mapped out the functionality and UI of the alpha version of the KidKaching platform'
                             )
                         )
@@ -3031,6 +3144,34 @@ Resume.view = function (ctrl, options) {
                         'Projects'
                     ),
                     m('span', { className: 'resume__line' }),
+                    m(
+                        'div',
+                        { className: 'resume__projects__title' },
+                        m(
+                            'p',
+                            null,
+                            m(
+                                'span',
+                                null,
+                                'Monitor Status Page'
+                            ),
+                            'New Visualization of Monitor Metrics and Status for Datadog '
+                        )
+                    ),
+                    m(
+                        'ul',
+                        { className: 'resume__projects__details' },
+                        m(
+                            'li',
+                            null,
+                            'Clouding monitoring, data visualization web app built using d3, React, Redux, and LESS'
+                        ),
+                        m(
+                            'li',
+                            null,
+                            'Updated old Monitor Status page to be a more performant, interactive and intuitive tool to manage and view monitors and alerts'
+                        )
+                    ),
                     m(
                         'div',
                         { className: 'resume__projects__title' },
@@ -3131,9 +3272,9 @@ Resume.view = function (ctrl, options) {
                         m(
                             'span',
                             null,
-                            'Languages:'
+                            'Languages (Most expreince):'
                         ),
-                        'Javascript, React, Redux, JSX, ES6, Angular.js, CSS, SASS, HTML5, MySQL, Python, jQuery, Git, MongoDB, PHP, PostgreSQL'
+                        'Python, Javascript (Babel/ES6), Node.js, SASS, PostgreSQL, MySQL'
                     ),
                     m(
                         'p',
@@ -3141,7 +3282,17 @@ Resume.view = function (ctrl, options) {
                         m(
                             'span',
                             null,
-                            'Media:'
+                            'Tools, Other Languages, Libraries:'
+                        ),
+                        'Bash, Canvas, d3, d3, Express, Flux, Git, Grunt, Jest, jQuery, LESS, Mithril, MongoDB, PHP, Puppeteer, React, Redux, Ruby, SVG, ScrollMagic, Webpack'
+                    ),
+                    m(
+                        'p',
+                        null,
+                        m(
+                            'span',
+                            null,
+                            'Media'
                         ),
                         'Sketch, Adobe Photoshop, Final Cut, Microsoft Suite'
                     ),
@@ -3171,7 +3322,40 @@ module.exports = Resume;
 
 
 var m = __webpack_require__(0);
-var Script = __webpack_require__(10);
+var Front = __webpack_require__(4);;
+var Resume = __webpack_require__(6);
+var Projects = __webpack_require__(5);
+window.App = {};
+
+m.route.mode = 'pathname';
+m.route(document.getElementById('app'), '/', {
+    '/': {
+        view: function view(ctrl) {
+            return m('.app', [m(Front, null)]);
+        }
+    },
+    '/resume': {
+        view: function view(ctrl) {
+            return m('.app', [m(Resume, null)]);
+        }
+    },
+    '/projects': {
+        view: function view(ctrl) {
+            return m('.app', [m(Projects, null)]);
+        }
+    }
+
+});
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var m = __webpack_require__(0);
+var Script = __webpack_require__(11);
 
 var Chat = {};
 
@@ -3202,7 +3386,7 @@ Chat.view = function () {
 module.exports = Chat;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3321,7 +3505,7 @@ var Message = function Message(content, side) {
 module.exports = Message;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3364,16 +3548,16 @@ var Responses = function Responses(resps) {
 module.exports = Responses;
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var m = __webpack_require__(0);
-var Message = __webpack_require__(8);
-var Responses = __webpack_require__(9);
-var json = __webpack_require__(20);
+var Message = __webpack_require__(9);
+var Responses = __webpack_require__(10);
+var json = __webpack_require__(21);
 var origin;
 var Script = {};
 
@@ -3539,12 +3723,12 @@ Script.view = function () {
 module.exports = Script;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
     if (true) {
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(17)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(18)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -3621,6 +3805,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
                 this.action = options.action;
+                this.container = options.container;
                 this.emitter = options.emitter;
                 this.target = options.target;
                 this.text = options.text;
@@ -3649,7 +3834,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 this.fakeHandlerCallback = function () {
                     return _this.removeFake();
                 };
-                this.fakeHandler = document.body.addEventListener('click', this.fakeHandlerCallback) || true;
+                this.fakeHandler = this.container.addEventListener('click', this.fakeHandlerCallback) || true;
 
                 this.fakeElem = document.createElement('textarea');
                 // Prevent zooming on iOS
@@ -3668,7 +3853,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 this.fakeElem.setAttribute('readonly', '');
                 this.fakeElem.value = this.text;
 
-                document.body.appendChild(this.fakeElem);
+                this.container.appendChild(this.fakeElem);
 
                 this.selectedText = (0, _select2.default)(this.fakeElem);
                 this.copyText();
@@ -3677,13 +3862,13 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
             key: 'removeFake',
             value: function removeFake() {
                 if (this.fakeHandler) {
-                    document.body.removeEventListener('click', this.fakeHandlerCallback);
+                    this.container.removeEventListener('click', this.fakeHandlerCallback);
                     this.fakeHandler = null;
                     this.fakeHandlerCallback = null;
                 }
 
                 if (this.fakeElem) {
-                    document.body.removeChild(this.fakeElem);
+                    this.container.removeChild(this.fakeElem);
                     this.fakeElem = null;
                 }
             }
@@ -3719,8 +3904,8 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
         }, {
             key: 'clearSelection',
             value: function clearSelection() {
-                if (this.target) {
-                    this.target.blur();
+                if (this.trigger) {
+                    this.trigger.focus();
                 }
 
                 window.getSelection().removeAllRanges();
@@ -3775,12 +3960,12 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
     if (true) {
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(11), __webpack_require__(18), __webpack_require__(16)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(12), __webpack_require__(19), __webpack_require__(17)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -3807,6 +3992,12 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
             default: obj
         };
     }
+
+    var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+        return typeof obj;
+    } : function (obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -3888,6 +4079,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 this.action = typeof options.action === 'function' ? options.action : this.defaultAction;
                 this.target = typeof options.target === 'function' ? options.target : this.defaultTarget;
                 this.text = typeof options.text === 'function' ? options.text : this.defaultText;
+                this.container = _typeof(options.container) === 'object' ? options.container : document.body;
             }
         }, {
             key: 'listenClick',
@@ -3911,6 +4103,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                     action: this.action(trigger),
                     target: this.target(trigger),
                     text: this.text(trigger),
+                    container: this.container,
                     trigger: trigger,
                     emitter: this
                 });
@@ -3982,7 +4175,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports) {
 
 var DOCUMENT_NODE_TYPE = 9;
@@ -3990,7 +4183,7 @@ var DOCUMENT_NODE_TYPE = 9;
 /**
  * A polyfill for Element.matches()
  */
-if (Element && !Element.prototype.matches) {
+if (typeof Element !== 'undefined' && !Element.prototype.matches) {
     var proto = Element.prototype;
 
     proto.matches = proto.matchesSelector ||
@@ -4009,7 +4202,10 @@ if (Element && !Element.prototype.matches) {
  */
 function closest (element, selector) {
     while (element && element.nodeType !== DOCUMENT_NODE_TYPE) {
-        if (element.matches(selector)) return element;
+        if (typeof element.matches === 'function' &&
+            element.matches(selector)) {
+          return element;
+        }
         element = element.parentNode;
     }
 }
@@ -4018,10 +4214,10 @@ module.exports = closest;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var closest = __webpack_require__(13);
+var closest = __webpack_require__(14);
 
 /**
  * Delegates event to a selector.
@@ -4033,7 +4229,7 @@ var closest = __webpack_require__(13);
  * @param {Boolean} useCapture
  * @return {Object}
  */
-function delegate(element, selector, type, callback, useCapture) {
+function _delegate(element, selector, type, callback, useCapture) {
     var listenerFn = listener.apply(this, arguments);
 
     element.addEventListener(type, listenerFn, useCapture);
@@ -4043,6 +4239,40 @@ function delegate(element, selector, type, callback, useCapture) {
             element.removeEventListener(type, listenerFn, useCapture);
         }
     }
+}
+
+/**
+ * Delegates event to a selector.
+ *
+ * @param {Element|String|Array} [elements]
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @param {Boolean} useCapture
+ * @return {Object}
+ */
+function delegate(elements, selector, type, callback, useCapture) {
+    // Handle the regular Element usage
+    if (typeof elements.addEventListener === 'function') {
+        return _delegate.apply(null, arguments);
+    }
+
+    // Handle Element-less usage, it defaults to global delegation
+    if (typeof type === 'function') {
+        // Use `document` as the first parameter, then apply arguments
+        // This is a short way to .unshift `arguments` without running into deoptimizations
+        return _delegate.bind(null, document).apply(null, arguments);
+    }
+
+    // Handle Selector-based usage
+    if (typeof elements === 'string') {
+        elements = document.querySelectorAll(elements);
+    }
+
+    // Handle Array-like based usage
+    return Array.prototype.map.call(elements, function (element) {
+        return _delegate(element, selector, type, callback, useCapture);
+    });
 }
 
 /**
@@ -4068,7 +4298,7 @@ module.exports = delegate;
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 /**
@@ -4123,11 +4353,11 @@ exports.fn = function(value) {
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var is = __webpack_require__(15);
-var delegate = __webpack_require__(14);
+var is = __webpack_require__(16);
+var delegate = __webpack_require__(15);
 
 /**
  * Validates all params and calls the right
@@ -4224,7 +4454,7 @@ module.exports = listen;
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 function select(element) {
@@ -4273,7 +4503,7 @@ module.exports = select;
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 function E () {
@@ -4345,7 +4575,7 @@ module.exports = E;
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -4373,293 +4603,10 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
-module.exports = {
-	"content": "Hi there, Im Justin! Welcome to my personal website. I'm a Front End Developer from New York and a recent grad from Tufts University up in Bah-ston.",
-	"sender": 0,
-	"next": [
-		{
-			"content": "People have described me as a: podcast addict, recipe sleuth, forest dweller, code forager and emoji amature",
-			"sender": 0,
-			"next": [
-				{
-					"content": "What else would you like to know about me?",
-					"sender": 0,
-					"next": [
-						{
-							"content": "Job Experience",
-							"sender": 1,
-							"next": [
-								{
-									"content": "Last summer I worked for a fintech start up called KidKaching, helping to build a platform to inform kids about the value of investing",
-									"sender": 0,
-									"next": [
-										{
-											"content": "https://media.giphy.com/media/l0Ex9PlHUW2uD24Ew/giphy.gif",
-											"sender": 0,
-											"next": [
-												{
-													"content": "In addition to making a fully interactive, kid-friendly, parallax homepage, I used React, SASS and ES 6 to create prototypes of the application",
-													"sender": 0,
-													"next": [
-														{
-															"content": "https://i.imgur.com/dgvXJbp.png",
-															"sender": 0,
-															"next": [
-																{
-																	"content": "One of these tools helped KidKaching to be one of the winners of the BNP Paribas International Hackathon!",
-																	"sender": 0,
-																	"next": [
-																		{
-																			"content": "Tell me more!",
-																			"sender": 1,
-																			"next": [
-																				{
-																					"content": "In 2015 I was a Solutions Engineering intern at TripleLift a native adtech company.",
-																					"sender": 0,
-																					"next": [
-																						{
-																							"content": "I got to get my hands on the entire stack, building internal tools for various departments using PHP, MySQL, Bootstrap and CSS3",
-																							"sender": 0,
-																							"next": [
-																								{
-																									"content": "Anything else?",
-																									"sender": 1,
-																									"next": [
-																										{
-																											"content": "I am currently working as a Front End advisor/contractor for Mimir Insights a startup started by Tufts Students",
-																											"sender": 0,
-																											"next": [
-																												{
-																													"content": "I worked to rehaul their CSS implementing SASS with BEM and SMACSS methodologies, in addition to developing various tools in Angular.JS ",
-																													"sender": 0,
-																													"next": [
-																														{
-																															"content": "If you would like to see my full resumé make sure to click on the hamburger in the top left corner.",
-																															"sender": 0,
-																															"next": []
-																														}
-																													]
-																												}
-																											]
-																										}
-																									]
-																								},
-																								{
-																									"content": "Other things please!",
-																									"sender": 1,
-																									"next": [
-																										{
-																											"content": "Great",
-																											"sender": 0,
-																											"next": []
-																										}
-																									]
-																								}
-																							]
-																						}
-																					]
-																				}
-																			]
-																		},
-																		{
-																			"content": "Let's move on",
-																			"sender": 1,
-																			"next": [
-																				{
-																					"content": "Awesome!",
-																					"sender": 0,
-																					"next": []
-																				}
-																			]
-																		}
-																	]
-																}
-															]
-														}
-													]
-												}
-											]
-										}
-									]
-								}
-							]
-						},
-						{
-							"content": "Your school!",
-							"sender": 1,
-							"next": [
-								{
-									"content": "I am a 2017 Graduate of Tufts University. GO BO's!",
-									"sender": 0,
-									"next": [
-										{
-											"content": "Up in Boston I gained a Bachelors of Science in Computer Science and a Minor in English",
-											"sender": 0,
-											"next": [
-												{
-													"content": "My coursework was varied and rigorous including: Computational Theory, Web Engineering, Algorithms and Natural Language Processing ",
-													"sender": 0,
-													"next": [
-														{
-															"content": "https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif",
-															"sender": 0,
-															"next": [
-																{
-																	"content": "The diversity of my courses and my minor in English gives me a nuanced approach to crafting user experiences!",
-																	"sender": 0,
-																	"next": [
-																		{
-																			"content": "What else?",
-																			"sender": 1,
-																			"next": [
-																				{
-																					"content": "I am currently a Teaching Assistant in two classes, Computational Theory and Web Engineering.",
-																					"sender": 0,
-																					"next": [
-																						{
-																							"content": "Assisting in lectures, teaching students how to write incredible proofs and even fixing trivial bugs has made TA'ing one of the highlights of my time at Tufts.",
-																							"sender": 0,
-																							"next": [
-																								{
-																									"content": "Any extracurriculars?",
-																									"sender": 1,
-																									"next": [
-																										{
-																											"content": "A ton! I was a Leader for Tufts wilderness pre-orientation program called TWO and was a mechanic for Tufts Bikes",
-																											"sender": 0,
-																											"next": [
-																												{
-																													"content": "Additionally I was a member of the Tufts University Beelzebubs, Tufts oldest a cappella group!",
-																													"sender": 0,
-																													"next": [
-																														{
-																															"content": "As you can see like most engineers I sort of live to 'over-commit' myself. To learn more about my experience at Tufts, check out my resume by clicking the menu button in the top left!",
-																															"sender": 0,
-																															"next": []
-																														}
-																													]
-																												}
-																											]
-																										}
-																									]
-																								},
-																								{
-																									"content": "Let's move on",
-																									"sender": 1,
-																									"next": [
-																										{
-																											"content": "Sure thing!",
-																											"sender": 0,
-																											"next": []
-																										}
-																									]
-																								}
-																							]
-																						}
-																					]
-																				}
-																			]
-																		},
-																		{
-																			"content": "Tell me about other things",
-																			"sender": 1,
-																			"next": [
-																				{
-																					"content": "Sounds good",
-																					"sender": 0,
-																					"next": []
-																				}
-																			]
-																		}
-																	]
-																}
-															]
-														}
-													]
-												}
-											]
-										}
-									]
-								}
-							]
-						},
-						{
-							"content": "GIFS PLEASE!",
-							"sender": 1,
-							"next": [
-								{
-									"content": "You got it!",
-									"sender": 0,
-									"next": [
-										{
-											"content": "https://media.giphy.com/media/av3t7WMe0t0M8/giphy.gif",
-											"sender": 0,
-											"next": [
-												{
-													"content": "https://media.giphy.com/media/6jOXsxk3UMAKI/giphy.gif",
-													"sender": 0,
-													"next": [
-														{
-															"content": "https://media.giphy.com/media/ZvLUtG6BZkBi0/giphy.gif",
-															"sender": 0,
-															"next": [
-																{
-																	"content": "https://media.giphy.com/media/yidUzqLoT6SxgKzv20/giphy.gif",
-																	"sender": 0,
-																	"next": []
-																}
-															]
-														}
-													]
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					]
-				}
-			]
-		}
-	]
-};
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var m = __webpack_require__(0);
-var Front = __webpack_require__(4);;
-var Resume = __webpack_require__(6);
-var Projects = __webpack_require__(5);
-window.App = {};
-
-m.route.mode = 'pathname';
-m.route(document.getElementById('app'), '/', {
-    '/': {
-        view: function view(ctrl) {
-            return m('.app', [m(Front, null)]);
-        }
-    },
-    '/resume': {
-        view: function view(ctrl) {
-            return m('.app', [m(Resume, null)]);
-        }
-    },
-    '/projects': {
-        view: function view(ctrl) {
-            return m('.app', [m(Projects, null)]);
-        }
-    }
-
-});
+module.exports = {"content":"Hi there, Im Justin! Welcome to my personal website. I'm a Front End Developer from New York and a recent grad from Tufts University up in Bah-ston.","sender":0,"next":[{"content":"People have described me as a: podcast addict, recipe sleuth, forest dweller, code forager and emoji amature","sender":0,"next":[{"content":"What else would you like to know about me?","sender":0,"next":[{"content":"Job Experience","sender":1,"next":[{"content":"Last summer I worked for a fintech start up called KidKaching, helping to build a platform to inform kids about the value of investing","sender":0,"next":[{"content":"https://media.giphy.com/media/l0Ex9PlHUW2uD24Ew/giphy.gif","sender":0,"next":[{"content":"In addition to making a fully interactive, kid-friendly, parallax homepage, I used React, SASS and ES 6 to create prototypes of the application","sender":0,"next":[{"content":"https://i.imgur.com/dgvXJbp.png","sender":0,"next":[{"content":"One of these tools helped KidKaching to be one of the winners of the BNP Paribas International Hackathon!","sender":0,"next":[{"content":"Tell me more!","sender":1,"next":[{"content":"In 2015 I was a Solutions Engineering intern at TripleLift a native adtech company.","sender":0,"next":[{"content":"I got to get my hands on the entire stack, building internal tools for various departments using PHP, MySQL, Bootstrap and CSS3","sender":0,"next":[{"content":"Anything else?","sender":1,"next":[{"content":"I am currently working as a Front End advisor/contractor for Mimir Insights a startup started by Tufts Students","sender":0,"next":[{"content":"I worked to rehaul their CSS implementing SASS with BEM and SMACSS methodologies, in addition to developing various tools in Angular.JS ","sender":0,"next":[{"content":"If you would like to see my full resumé make sure to click on the hamburger in the top left corner.","sender":0,"next":[]}]}]}]},{"content":"Other things please!","sender":1,"next":[{"content":"Great","sender":0,"next":[]}]}]}]}]},{"content":"Let's move on","sender":1,"next":[{"content":"Awesome!","sender":0,"next":[]}]}]}]}]}]}]}]},{"content":"Your school!","sender":1,"next":[{"content":"I am a 2017 Graduate of Tufts University. GO BO's!","sender":0,"next":[{"content":"Up in Boston I gained a Bachelors of Science in Computer Science and a Minor in English","sender":0,"next":[{"content":"My coursework was varied and rigorous including: Computational Theory, Web Engineering, Algorithms and Natural Language Processing ","sender":0,"next":[{"content":"https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif","sender":0,"next":[{"content":"The diversity of my courses and my minor in English gives me a nuanced approach to crafting user experiences!","sender":0,"next":[{"content":"What else?","sender":1,"next":[{"content":"I am currently a Teaching Assistant in two classes, Computational Theory and Web Engineering.","sender":0,"next":[{"content":"Assisting in lectures, teaching students how to write incredible proofs and even fixing trivial bugs has made TA'ing one of the highlights of my time at Tufts.","sender":0,"next":[{"content":"Any extracurriculars?","sender":1,"next":[{"content":"A ton! I was a Leader for Tufts wilderness pre-orientation program called TWO and was a mechanic for Tufts Bikes","sender":0,"next":[{"content":"Additionally I was a member of the Tufts University Beelzebubs, Tufts oldest a cappella group!","sender":0,"next":[{"content":"As you can see like most engineers I sort of live to 'over-commit' myself. To learn more about my experience at Tufts, check out my resume by clicking the menu button in the top left!","sender":0,"next":[]}]}]}]},{"content":"Let's move on","sender":1,"next":[{"content":"Sure thing!","sender":0,"next":[]}]}]}]}]},{"content":"Tell me about other things","sender":1,"next":[{"content":"Sounds good","sender":0,"next":[]}]}]}]}]}]}]}]},{"content":"GIFS PLEASE!","sender":1,"next":[{"content":"You got it!","sender":0,"next":[{"content":"https://media.giphy.com/media/av3t7WMe0t0M8/giphy.gif","sender":0,"next":[{"content":"https://media.giphy.com/media/6jOXsxk3UMAKI/giphy.gif","sender":0,"next":[{"content":"https://media.giphy.com/media/ZvLUtG6BZkBi0/giphy.gif","sender":0,"next":[{"content":"https://media.giphy.com/media/yidUzqLoT6SxgKzv20/giphy.gif","sender":0,"next":[]}]}]}]}]}]}]}]}]}
 
 /***/ })
 /******/ ]);

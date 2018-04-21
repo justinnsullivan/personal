@@ -505,7 +505,9 @@ a {
   -webkit-box-shadow: 0px 11px 25px -13px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0px 11px 25px -13px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 11px 25px -13px rgba(0, 0, 0, 0.3); }
-  .loading.message--bot p, .loading.message--user p, .first.loading.message--bot span p, .first.loading.message--user span p {
+  .loading.message--bot p, .loading.message--user p,
+  .first.loading.message--bot span p,
+  .first.loading.message--user span p {
     display: none; }
   .hidden.message--bot, .hidden.message--user {
     display: none; }
