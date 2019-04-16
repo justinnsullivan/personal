@@ -29,7 +29,7 @@ var Message = function(content, side) {
         var content = this.content();
         var loader = load_m;
         if (!this.containsClass('loading')) loader = '';
-        if (content.indexOf('.gif') != -1 || content.indexOf('.png') != -1 || content.indexOf('.jpg') != -1) {
+        if (content.indexOf('.gif') != -1 || content.indexOf('.png') != -1 || content.indexOf('.jpg') != -1 || content.indexOf('imgix') != -1) {
             content = <img src={content} className='message__img'/>;
         }
         if (index == 0 || messages[index - 1].side() != this.side()) {

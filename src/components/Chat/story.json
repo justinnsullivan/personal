@@ -1,175 +1,240 @@
 {
-    "content": "Hi there, Im Justin! Welcome to my personal website. I'm a Front End Developer from New York and a recent grad from Tufts University up in Bah-ston.",
+    "content": "Hi there, Im Justin! Welcome to my personal website. I'm a front end engineer and writer from New York, a 2017 Tufts grad and my grandfather's fourth favorite grandchild.",
     "sender": 0,
-    "next": [{
-        "content": "People have described me as a: podcast addict, recipe sleuth, forest dweller, code forager and emoji amature",
-        "sender": 0,
-        "next": [{
-            "content": "What else would you like to know about me?",
+    "next": [
+        {
+            "content": "People have described me as a: podcast addict, recipe junkie, code forager and emoji amature",
             "sender": 0,
-            "next": [{
-                "content": "Job Experience",
-                "sender": 1,
-                "next": [{
-                    "content": "Last summer I worked for a fintech start up called KidKaching, helping to build a platform to inform kids about the value of investing",
+            "next": [
+                {
+                    "content": "What else would you like to know about me?",
                     "sender": 0,
-                    "next": [{
-                        "content": "https://media.giphy.com/media/l0Ex9PlHUW2uD24Ew/giphy.gif",
-                        "sender": 0,
-                        "next": [{
-                            "content": "In addition to making a fully interactive, kid-friendly, parallax homepage, I used React, SASS and ES 6 to create prototypes of the application",
-                            "sender": 0,
-                            "next": [{
-                                "content": "https://i.imgur.com/dgvXJbp.png",
-                                "sender": 0,
-                                "next": [{
-                                    "content": "One of these tools helped KidKaching to be one of the winners of the BNP Paribas International Hackathon!",
+                    "next": [
+                        {
+                            "content": "Job Experience",
+                            "sender": 1,
+                            "next": [
+                                {
+                                    "content": "I have held positions in many different industries but I have always prided myself on my drive, attention to detail and creativity. Here are some examples of some of the things I'm most proud of!",
                                     "sender": 0,
-                                    "next": [{
-                                        "content": "Tell me more!",
-                                        "sender": 1,
-                                        "next": [{
-                                            "content": "In 2015 I was a Solutions Engineering intern at TripleLift a native adtech company.",
+                                    "next": [
+                                        {
+                                            "content": "I am currently a Front End Engineer at Privacy.com. We allow our users to generate free, secure credit card numbers to keep their financial data safe. Think of it as a password manager for online shopping.",
                                             "sender": 0,
-                                            "next": [{
-                                                "content": "I got to get my hands on the entire stack, building internal tools for various departments using PHP, MySQL, Bootstrap and CSS3",
-                                                "sender": 0,
-                                                "next": [{
-                                                    "content": "Anything else?",
-                                                    "sender": 1,
-                                                    "next": [{
-                                                        "content": "I am currently working as a Front End advisor/contractor for Mimir Insights a startup started by Tufts Students",
-                                                        "sender": 0,
-                                                        "next": [{
-                                                            "content": "I worked to rehaul their CSS implementing SASS with BEM and SMACSS methodologies, in addition to developing various tools in Angular.JS ",
+                                            "next": [
+                                                {
+                                                    "content": "https://ph-files.imgix.net/549df64e-7b8e-4d95-a981-7a2bfed987b1?auto=format&auto=compress&codec=mozjpeg&cs=strip",
+                                                    "sender": 0,
+                                                    "next": [
+                                                        {
+                                                            "content": "At Privacy I work closely with the design team to help shape the look and feel of our user experience across all platforms. This includes web (Angular, SASS, Node) and our mobile applications (React Native).",
                                                             "sender": 0,
-                                                            "next": [{
-                                                                "content": "If you would like to see my full resumé make sure to click on the hamburger in the top left corner.",
-                                                                "sender": 0,
-                                                                "next": []
-                                                            }]
-                                                        }]
-                                                    }]
-                                                }, {
-                                                    "content": "Other things please!",
-                                                    "sender": 1,
-                                                    "next": [{
-                                                        "content": "Great",
-                                                        "sender": 0,
-                                                        "next": []
-                                                    }]
-                                                }]
-                                            }]
-                                        }]
-                                    }, {
-                                        "content": "Let's move on",
-                                        "sender": 1,
-                                        "next": [{
-                                            "content": "Awesome!",
-                                            "sender": 0,
-                                            "next": []
-                                        }]
-                                    }]
-                                }]
-                            }]
-                        }]
-
-                    }]
-                }]
-            }, {
-                "content": "Your school!",
-                "sender": 1,
-                "next": [{
-                    "content": "I am a 2017 Graduate of Tufts University. GO BO's!",
-                    "sender": 0,
-                    "next": [{
-                        "content": "Up in Boston I gained a Bachelors of Science in Computer Science and a Minor in English",
-                        "sender": 0,
-                        "next": [{
-                            "content": "My coursework was varied and rigorous including: Computational Theory, Web Engineering, Algorithms and Natural Language Processing ",
-                            "sender": 0,
-                            "next": [{
-                                "content": "https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif",
-                                "sender": 0,
-                                "next": [{
-                                    "content": "The diversity of my courses and my minor in English gives me a nuanced approach to crafting user experiences!",
+                                                            "next": [
+                                                                {
+                                                                    "content": "I touch every part of the development process from design to deployment to ensure we maintain a consistent and clean user experience.",
+                                                                    "sender": 0,
+                                                                    "next": [
+                                                                        {
+                                                                            "content": "Tell me more!",
+                                                                            "sender": 1,
+                                                                            "next": [
+                                                                                {
+                                                                                    "content": "Some other professional highlights include:",
+                                                                                    "sender": 0,
+                                                                                    "next": [
+                                                                                        {
+                                                                                            "content": "Working in a cooking school in Madrid helping in culinary and wine courses, translating recipes and working with some unbelievable and knowledgable folks",
+                                                                                            "sender": 0,
+                                                                                            "next": [
+                                                                                                {
+                                                                                                    "content": "Helping develop an investing app for kids that won the BNP Paribas International Hackathon",
+                                                                                                    "sender": 0,
+                                                                                                    "next": [
+                                                                                                        {
+                                                                                                            "content": "Spending a summer as a line chef in a catering kitchen",
+                                                                                                            "sender": 0,
+                                                                                                            "next": [
+                                                                                                                {
+                                                                                                                    "content": "And helping produce concerts in Central Park, the Prudential Center and on Governor's Island",
+                                                                                                                    "sender": 0,
+                                                                                                                    "next": [
+                                                                                                                        {
+                                                                                                                            "content": "If you would like to see my full resumé make sure to click on the hamburger in the top left corner.",
+                                                                                                                            "sender": 0,
+                                                                                                                            "next": []
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "content": "Let's move on",
+                                                                            "sender": 1,
+                                                                            "next": [
+                                                                                {
+                                                                                    "content": "Awesome!",
+                                                                                    "sender": 0,
+                                                                                    "next": []
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "content": "Your school!",
+                            "sender": 1,
+                            "next": [
+                                {
+                                    "content": "I am a 2017 Graduate of Tufts University. GO BO's!",
                                     "sender": 0,
-                                    "next": [{
-                                        "content": "What else?",
-                                        "sender": 1,
-                                        "next": [{
-                                            "content": "I am currently a Teaching Assistant in two classes, Computational Theory and Web Engineering.",
+                                    "next": [
+                                        {
+                                            "content": "Up in Boston I gained a Bachelors of Science in Computer Science and a Minor in English",
                                             "sender": 0,
-                                            "next": [{
-                                                "content": "Assisting in lectures, teaching students how to write incredible proofs and even fixing trivial bugs has made TA'ing one of the highlights of my time at Tufts.",
-                                                "sender": 0,
-                                                "next": [{
-                                                    "content": "Any extracurriculars?",
-                                                    "sender": 1,
-                                                    "next": [{
-                                                        "content": "A ton! I was a Leader for Tufts wilderness pre-orientation program called TWO and was a mechanic for Tufts Bikes",
-                                                        "sender": 0,
-                                                        "next": [{
-                                                            "content": "Additionally I was a member of the Tufts University Beelzebubs, Tufts oldest a cappella group!",
+                                            "next": [
+                                                {
+                                                    "content": "My coursework was varied and rigorous. This included courses in Computational Theory, Web Engineering, Algorithms, Advanced Poetry, Screenwriting and Creativing Writing.",
+                                                    "sender": 0,
+                                                    "next": [
+                                                        {
+                                                            "content": "https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif",
                                                             "sender": 0,
-                                                            "next": [{
-                                                                "content": "As you can see like most engineers I sort of live to 'over-commit' myself. To learn more about my experience at Tufts, check out my resume by clicking the menu button in the top left!",
-                                                                "sender": 0,
-                                                                "next": []
-                                                            }]
-                                                        }]
-                                                    }]
-                                                }, {
-                                                    "content": "Let's move on",
-                                                    "sender": 1,
-                                                    "next": [{
-                                                        "content": "Sure thing!",
-                                                        "sender": 0,
-                                                        "next": []
-                                                    }]
-                                                }]
-                                            }]
-                                        }]
-                                    }, {
-                                        "content": "Tell me about other things",
-                                        "sender": 1,
-                                        "next": [{
-                                            "content": "Sounds good",
-                                            "sender": 0,
-                                            "next": []
-                                        }]
-                                    }]
-                                }]
-                            }]
-                        }]
-
-                    }]
-                }]
-            }, {
-                "content": "GIFS PLEASE!",
-                "sender": 1,
-                "next": [{
-                    "content": "You got it!",
-                    "sender": 0,
-                    "next": [{
-                        "content": "https://media.giphy.com/media/av3t7WMe0t0M8/giphy.gif",
-                        "sender": 0,
-                        "next": [{
-                            "content": "https://media.giphy.com/media/6jOXsxk3UMAKI/giphy.gif",
-                            "sender": 0,
-                            "next": [{
-                                "content": "https://media.giphy.com/media/ZvLUtG6BZkBi0/giphy.gif",
-                                "sender": 0,
-                                "next": [{
-                                    "content": "https://media.giphy.com/media/yidUzqLoT6SxgKzv20/giphy.gif",
+                                                            "next": [
+                                                                {
+                                                                    "content": "https://media.giphy.com/media/nGtOFccLzujug/giphy.gif",
+                                                                    "sender": 0,
+                                                                    "next": [
+                                                                        {
+                                                                            "content": "What else?",
+                                                                            "sender": 1,
+                                                                            "next": [
+                                                                                {
+                                                                                    "content": "I was a Teaching Assistant in two classes, Computational Theory and Web Engineering.",
+                                                                                    "sender": 0,
+                                                                                    "next": [
+                                                                                        {
+                                                                                            "content": "Assisting in lectures and teaching students how to write incredible proofs was one of the highlights of my Tufts experience.",
+                                                                                            "sender": 0,
+                                                                                            "next": [
+                                                                                                {
+                                                                                                    "content": "Any extracurriculars?",
+                                                                                                    "sender": 1,
+                                                                                                    "next": [
+                                                                                                        {
+                                                                                                            "content": "A ton! I was a Leader for Tufts wilderness pre-orientation program called TWO and was a mechanic for Tufts Bikes",
+                                                                                                            "sender": 0,
+                                                                                                            "next": [
+                                                                                                                {
+                                                                                                                    "content": "Additionally I was a member of the Tufts University Beelzebubs, Tufts oldest a cappella group and Spirit of Creativity, Tufts student-run hip hop dance team!",
+                                                                                                                    "sender": 0,
+                                                                                                                    "next": [
+                                                                                                                        {
+                                                                                                                            "content": "As you can see I sort of live to 'over-commit' myself. To learn more about my time at Tufts, check out my resume by clicking the menu button in the top left!",
+                                                                                                                            "sender": 0,
+                                                                                                                            "next": []
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "content": "Let's move on",
+                                                                                                    "sender": 1,
+                                                                                                    "next": [
+                                                                                                        {
+                                                                                                            "content": "Sure thing!",
+                                                                                                            "sender": 0,
+                                                                                                            "next": []
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "content": "Tell me about other things",
+                                                                            "sender": 1,
+                                                                            "next": [
+                                                                                {
+                                                                                    "content": "Sounds good",
+                                                                                    "sender": 0,
+                                                                                    "next": []
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "content": "GIFS PLEASE!",
+                            "sender": 1,
+                            "next": [
+                                {
+                                    "content": "You got it!",
                                     "sender": 0,
-                                    "next": []
-                                }]
-                            }]
-                        }]
-                    }]
-                }]
-            }]
-        }]
-    }]
+                                    "next": [
+                                        {
+                                            "content": "https://media.giphy.com/media/av3t7WMe0t0M8/giphy.gif",
+                                            "sender": 0,
+                                            "next": [
+                                                {
+                                                    "content": "https://media.giphy.com/media/6jOXsxk3UMAKI/giphy.gif",
+                                                    "sender": 0,
+                                                    "next": [
+                                                        {
+                                                            "content": "https://media.giphy.com/media/ZvLUtG6BZkBi0/giphy.gif",
+                                                            "sender": 0,
+                                                            "next": [
+                                                                {
+                                                                    "content": "https://media.giphy.com/media/yidUzqLoT6SxgKzv20/giphy.gif",
+                                                                    "sender": 0,
+                                                                    "next": []
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }
